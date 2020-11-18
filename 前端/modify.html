@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改学生信息</title>
+    <style>
+        body {
+            background-color: #49d6d6;
+        }
+        
+        .m2,
+        .m3,
+        .m4,
+        .m5,
+        .m6 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .m1 {
+            text-align: center;
+            margin-top: 110px;
+        }
+        
+        label:before {
+            display: inline-block;
+            text-align: right;
+            content: '*';
+            color: red;
+        }
+        
+        .confirm {
+            width: 80px;
+            height: 30px;
+            border-radius: 29px;
+            background-color: rgb(34, 34, 221);
+            border: rgb(34, 34, 221);
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <strong>修改信息</strong>
+    </p>
+    <hr>
+    <form action="" name="form1" onsubmit="return test()">
+        <div class="m1">
+            <label for="">登陆ID：</label>
+            <input class="id" type="text" disabled="true">
+        </div>
+        <div class="m2">
+            <label for="">姓名：</label>
+            <input name="username" type="text">
+            <span id="namemsg">*</span>
+        </div>
+        <div class="m3">
+            <label for="">手机号码：</label>
+            <input name="phone" type="text">
+            <span id="iphone">*</span>
+        </div>
+        <div class="m4">
+            <label for="">修改密码：</label>
+            <input name="pwd" type="password">
+            <span id="pwdmsg">*</span>
+        </div>
+        <div class="m5">
+            <label for="">确认密码：</label>
+            <input name="pwd1" type="password">
+            <span id="pwd1msg">*</span>
+        </div>
+        <div class="m6">
+            <input type="submit" name="sub" class="confirm" value="确认">
+        </div>
+
+    </form>
+
+
+    <script type="text/javascript">
+        //用户名验证
+        document.form1.username.onkeyup = function() {
+                var reg = /[\u4E00-\u9FA5]/;
+                if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                    document.getElementById("namemsg").innerHTML = "输入正确";
+                } else {
+                    document.getElementById("namemsg").innerHTML = "输入错误";
+                }
+            }
+            //密码验证
+        document.form1.pwd.onkeyup = function() {
+                var reg1 = /[A-Za-z]+[0-9]+/;
+                if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                    document.getElementById("pwdmsg").innerHTML = "输入正确";
+                } else {
+                    document.getElementById("pwdmsg").innerHTML = "输入错误";
+                }
+            }
+            //确认密码
+        document.form1.pwd1.onkeyup = function() {
+                if (this.value == document.form1.pwd.value && this.value != "") {
+                    document.getElementById("pwd1msg").innerHTML = "输入正确";
+                } else {
+                    document.getElementById("pwd1msg").innerHTML = "密码不符";
+                }
+            }
+            //手机号验证
+        document.form1.phone.onkeyup = function() {
+            var reg2 = /^(13|14|15|17|18)[0-9]{9}/;
+            if (reg2.test(this.value) && this.value.length == 11) {
+                document.getElementById("iphone").innerHTML = "输入正确";
+            } else {
+                document.getElementById("iphone").innerHTML = "输入错误";
+            }
+        }
+
+
+
+        //注册按钮方法
+        function test() {
+            var str = "输入正确"
+            if (document.getElementById("namemsg").innerHTML !== str) {
+                document.getElementById("namemsg").innerHTML = "输入错误";
+                document.form1.username.focus();
+                document.form1.username.value = "";
+                return false;
+            }
+            if (document.getElementById("pwdmsg").innerHTML !== str) {
+                document.getElementById("pwdmsg").innerHTML = "输入错误";
+                document.form1.pwd.focus();
+                document.form1.pwd.value = "";
+                return false;
+            }
+            if (document.getElementById("pwd1msg").innerHTML !== str) {
+                document.getElementById("pwd1msg").innerHTML = "输入错误";
+                document.form1.pwd1.focus();
+                document.form1.pwd1.value = "";
+                return false;
+            }
+            if (document.getElementById("iphone").innerHTML !== str) {
+                document.getElementById("iphone").innerHTML = "输入错误";
+                document.form1.iphone.focus();
+                document.form1.iphone.value = "";
+                return false;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
