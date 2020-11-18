@@ -40,7 +40,6 @@
             height: 480px;
             background: white;
             margin: 60px auto 0px;
-            display: none;
             padding-top: 15px;
         }
         
@@ -127,12 +126,13 @@
         <hr>
         <div class="login_form">
             <form action="post">
-                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" type="text" name="userid">
+                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="login_id" maxlength="30" type="text" name="userid">
                 <br><br><br>
-                <label for="">输入密码:</label>&nbsp;<input type="password" maxlength="30" name="passwd">
+                <label for="">输入密码:</label>&nbsp;<input id="login_pwd" type="password" maxlength="30" name="passwd">
                 <br><br><br>
-                <button type="submit">登陆</button>
+
             </form>
+            <button id="submit1">登陆</button>
         </div>
 
     </div>
@@ -141,72 +141,106 @@
         <hr>
         <div class="register_form">
             <form action="post">
-                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" maxlength="20" name="userid">
+                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="register_id" maxlength="30" name="userid" placeholder="请 输 入 ID">
                 <br><br>
-                <label for="">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" type="text" name="username">
+                <label for="">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="username">
                 <br><br>
-                <label for="">手机号:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" oninput="if(value.length>11)value=value.slice(0,11)" name="phone">
+                <label for="">手机号:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="phone" type="number" oninput="if(value.length>11)value=value.slice(0,11)" name="phone" placeholder="请 输 入 手 机 号">
                 <br><br>
-                <label for="">输入密码:</label>&nbsp;<input id="pwd" type="password" maxlength="30" name="passwd">
+                <label for="">输入密码:</label>&nbsp;<input id="register_pwd" type="password" maxlength="30" name="passwd" placeholder="请 输 入 密 码">
                 <br><br>
-                <label for="">确认密码:</label>&nbsp;<input type="password" maxlength="30" name="passwd">
+                <label for="">确认密码:</label>&nbsp;<input id="register_repwd" type="password" maxlength="30" name="repasswd" placeholder="请 再 次 输 入 密 码">
                 <br><br>
-                <button type="submit">注册</button>
+
             </form>
+            <button id="submit2">注册</button>
         </div>
     </div>
     <script type="text/javascript">
+        //登陆点击
         $(".login").click(function() {
             $("#login").css("display", "block");
             $("#register").css("display", "none");
-            $(".one").css("display", "none");
+
         });
+
+        //登陆提交
+        $("#submit1").click(function() {
+            var login_id = $.trim($("#login_id").val());
+            var login_pwd = $.trim($("#login_pwd").val());
+            if (login_pwd != "" && login_id != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: {
+                        userid: $("#login_id").val(),
+                        passwd: $("#login_pwd").val()
+                    },
+                    success: function() {
+                        alert("登陆成功")
+                    }
+                })
+            } else {
+                alert("请检查输入的登陆ID和密码是否出错！")
+            }
+
+        });
+
+
+        //注册点击
         $(".register").click(function() {
             $("#login").css("display", "none");
             $("#register").css("display", "block");
-            $(".one").css("display", "none");
+
         });
 
-        $("#pwd").blur(function() {
+        //注册的输入密码验证
+        $("#register_pwd").blur(function() {
             var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
 
-            if (pattern.test($("#pwd").val())) {
+            if (pattern.test($("#register_pwd").val())) {
 
             } else {
                 alert("最少八位密码，必须包含大小写和特殊字符");
             }
         });
 
-        $(".login_form>button").click(function() {
-            $.ajax({
-                type: 'POST',
-                url: '',
-                data: {
-                    userid: $('form input[name=userid]').val(),
-                    passwd: $('form input[name=passwd]').val()
+        //注册的确认密码验证
+        $("#register_repwd").blur(function() {
+            var password = $("#register_pwd").val();
+            var repassword = $("#register_repwd").val();
+            if (password != "" && repassword != "" && repassword == password) {
 
-                },
-                success: function() {
-                    alert("登陆成功")
-                }
-            })
+            } else {
+                alert("密码或确认密码为空 或者 两次输入的密码不一致")
+            }
         });
 
-        $(".register_form>button").click(function() {
-            $.ajax({
-                type: 'POST',
-                url: '',
-                data: {
-                    userid: $('form input[name=userid]').val(),
-                    username: $('form input[name=username]').val(),
-                    phone: $('form input[name=phone]').val(),
-                    passwd: $('form input[name=passwd]').val()
 
-                },
-                success: function() {
-                    alert("注册成功")
-                }
-            })
+
+
+        //注册的提交
+        $("#submit2").click(function() {
+            var password = $.trim($("#register_pwd").val());
+            var repassword = $.trim($("#register_repwd").val());
+            var reg_id = $.trim($("#register_id").val());
+            var reg_name = $.trim($("#register_name").val());
+            var phone = $.trim($("#phone").val());
+            if (password != "" && repassword != "" && repassword == password && reg_id != "" && phone != "" && reg_name != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: $("#register_form").serialize(),
+                    success: function() {
+                        $("#login").css("display", "block");
+                        $("#register").css("display", "none");
+                        alert("注册成功，请登陆")
+                    }
+                })
+            } else {
+                alert("请再确认你所输入的信息是否有遗漏！")
+            }
+
         });
     </script>
 </body>
