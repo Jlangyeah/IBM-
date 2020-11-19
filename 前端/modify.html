@@ -90,7 +90,7 @@
             }
             //密码验证
         document.form1.pwd.onkeyup = function() {
-                var reg1 = /[A-Za-z]+[0-9]+/;
+                var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
                 if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                     document.getElementById("pwdmsg").innerHTML = "输入正确";
                 } else {
@@ -140,8 +140,8 @@
             }
             if (document.getElementById("iphone").innerHTML !== str) {
                 document.getElementById("iphone").innerHTML = "输入错误";
-                document.form1.iphone.focus();
-                document.form1.iphone.value = "";
+                document.form1.phone.focus();
+                document.form1.phone.value = "";
                 return false;
             }
 
