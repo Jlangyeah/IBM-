@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: scroll;
+        }
+        /* 背景 */
+        
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #d6e0ff;
+            /* background-color: #dadaff; */
+        }
+        /* 标题 */
+        
+        .box-title {
+            /* padding-top: 5px; */
+            padding-bottom: 10px;
+            padding-left: 15px;
+            font-size: large;
+            font-weight: bold;
+            color: rgb(61, 60, 60);
+            border-bottom: 1px dashed gray;
+        }
+        /* 整体 */
+        
+        .box {
+            margin-top: 10px;
+            margin-left: 10%;
+            width: 80%;
+        }
+        /* 表格 */
+        
+        .table {
+            width: 100%;
+            height: auto;
+            border-collapse: collapse;
+            border-color: rgb(224, 219, 219);
+        }
+        
+        .table th {
+            background-color: #94b9cd;
+            color: white;
+            width: 100px;
+        }
+        
+        .table td {
+            background-color: white;
+        }
+        /* 数字按钮栏 */
+        
+        .number {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 18%;
+            align-items: center;
+        }
+        
+        ul.b {
+            display: inline-block;
+        }
+        
+        ul.b li {
+            display: inline;
+        }
+        
+        ul.b li a {
+            border: 1px solid rgb(224, 219, 219);
+            text-decoration: none;
+            border-radius: 10%;
+            font-size: small;
+            color: gray;
+            background-color: white;
+            float: left;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+        
+        ul.b li a:hover {
+            background-color: #1890ff;
+            color: white;
+        }
+        /* 文本 */
+        
+        .txt {
+            width: 80px;
+            height: 27px;
+            color: gray;
+            border: 1px solid rgb(224, 219, 219);
+            border-radius: 10%;
+            margin-left: 5px;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        span {
+            color: gray;
+        }
+        /* 跳转数字框 */
+        
+        .changenumber {
+            width: 27px;
+            height: 27px;
+            color: gray;
+            border: 1px solid rgb(224, 219, 219);
+            border-radius: 10%;
+            text-align: center;
+        }
+        
+        img {
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+        }
+        
+        img:hover {
+            cursor: pointer;
+        }
+        /* 弹出框  */
+        
+        #popBox {
+            display: none;
+            z-index: 11;
+            width: 500px;
+            height: 200px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: rgb(245, 245, 245);
+        }
+        
+        .pop-text {
+            text-align: center;
+            padding-top: 10%;
+        }
+        
+        .chose {
+            margin-top: 40px;
+            margin-left: 110px;
+        }
+        
+        .chose-btn {
+            width: 100px;
+            height: 30px;
+            /* margin-bottom: 5px; */
+            margin-left: 20px;
+            border: 2px solid #1890ff;
+            border-radius: 5%;
+            background-color: white;
+        }
+        
+        .chose-btn:hover {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <p class="box-title">查询结果</p>
+        <div class="box">
+            <table class="table" border="1" cellpadding="10">
+                <tr>
+                    <th>序号</th>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>出生年月日</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>班级</th>
+                    <th>系部</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="modify.PNG" alt="modify"><img src="delete.PNG" alt="delete" onclick="popBox()"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="modify.PNG" alt="modify"><img src="delete.PNG" alt="delete" onclick="popBox()"></td>
+                </tr>
+            </table>
+            <div class="number">
+                <ul class="b">
+                    <li><a href="#">&lt;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">&gt;</a></li>
+                    <input class="txt" type="text" readonly value="10条/页">
+                    <span> &nbsp;跳至&nbsp;<input class="changenumber" type="text" id="id" />&nbsp;页</span>
+                    <p><span>总共10页</span></p>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="popBox">
+        <p class="pop-text">信息删除不可恢复，请确认是否删除？</p>
+        <div class="chose">
+            <button type="button" class="chose-btn" onclick="">是</button>
+            <button type="button" class="chose-btn" onclick="closeBox()">否</button></button>
+        </div>
+        <div class="content"></div>
+    </div>
+    <script>
+        /*点击弹出按钮*/
+        function popBox() {
+            var popBox = document.getElementById("popBox");
+            popBox.style.display = "block";
+        };
+
+        /*点击关闭按钮*/
+        function closeBox() {
+            var popBox = document.getElementById("popBox");
+            popBox.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
