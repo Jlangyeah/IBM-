@@ -10,6 +10,7 @@
             margin: 0;
         }
         /* 背景 */
+        
         .bg {
             position: fixed;
             width: 100%;
@@ -17,6 +18,7 @@
             background-color: white;
         }
         /* 整体 */
+        
         .box {
             margin-top: 10%;
             margin-left: 10%;
@@ -27,6 +29,7 @@
             /* background-color: #dadaff; */
         }
         /* 框标题 */
+        
         .box-title {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -35,9 +38,9 @@
             font-weight: bold;
             color: rgb(61, 60, 60);
             border-bottom: 1px dashed gray;
-
         }
         /* 填写框 */
+        
         .select {
             padding-top: 2%;
             display: block;
@@ -45,6 +48,7 @@
             text-align: center;
         }
         /* 文本框 */
+        
         .text-box {
             width: 140px;
             height: 25px;
@@ -52,7 +56,8 @@
             border-radius: 5%;
         }
         /* 选择栏 */
-        .select-box{
+        
+        .select-box {
             width: 147px;
             height: 28px;
             border-color: gray;
@@ -60,13 +65,14 @@
             border-radius: 5%;
         }
         /* 按钮框 */
+        
         .btn-box {
             display: box;
             padding-top: 4%;
             text-align: center;
-            
         }
         /* 按钮 */
+        
         .btn {
             width: 100px;
             height: 30px;
@@ -75,13 +81,13 @@
             border-radius: 5%;
             background-color: white;
         }
-        .btn:hover{
-            background-color:#1890ff;
+        
+        .btn:hover {
+            background-color: #1890ff;
             color: white;
             border: none;
             border-radius: 5%;
         }
-        
     </style>
 </head>
 
@@ -96,14 +102,14 @@
                     <option value="男">男</option>
                     <option value="女">女</option></option></select></p>
                 <!-- <p><span class="title">性别: </span><input class="text-box" type="text" id="sex" /></p> -->
-                <p><span class="title">学号: </span><input class="text-box" type="text" id="id" maxlength="30"  /></p>
+                <p><span class="title">学号: </span><input class="text-box" type="text" id="id" maxlength="30" /></p>
                 <p><span class="title">系部: </span><select class="select-box" id="marjor">
                     <option value=""></option>
                     <option value="智能制造学部">智能制造学部</option>
                     <option value="经济管理学院">经济管理学院</option>
                     <option value="土木建筑学院">土木建筑学院</option></select></p>
                 <!-- <p><span class="title">系部: </span><input class="text-box" type="text" id="major" /></p> -->
-                <p><span class="title">班级: </span><input class="text-box" type="text" id="class" maxlength="3" /></p>
+                <p><span class="title">班级: </span><input class="text-box" type="text" id="class" maxlength="10" /></p>
             </form>
             <div class="btn-box">
                 <button class="btn" id="search" onclick="selectBox()">查询</button>
@@ -115,35 +121,35 @@
     </div>
     </div>
     <script>
-        function selectBox(){
+        function selectBox() {
             var list = ["李丽", "刘强", "李强 "];
-            var selname=document.getElementById("name").value;
+            var selname = document.getElementById("name").value;
             var len = list.length;
             var arr = [];
             // 输入关键词
             var reg = new RegExp(selname);
-            for(var i=0;i<len;i++){
-                if(selname==null || selname==""){
+            for (var i = 0; i < len; i++) {
+                if (selname == null || selname == "") {
                     alert("请输入查询条件")
                     return false;
                 }
                 //获取列表
-                else if(list[i].match(reg)){
+                else if (list[i].match(reg)) {
                     arr.push(list[i]);
                     // console.log(arr);
                     alert(arr);
                 }
-                
+
             }
         }
-        function deleteBox(){
-            document.getElementById("name").value="";
-            document.getElementById("sex").value="";
-            document.getElementById("id").value="";
-            document.getElementById("marjor").value="";
-            document.getElementById("class").value="";
-        }
 
+        function deleteBox() {
+            document.getElementById("name").value = "";
+            document.getElementById("sex").value = "";
+            document.getElementById("id").value = "";
+            document.getElementById("marjor").value = "";
+            document.getElementById("class").value = "";
+        }
     </script>
 </body>
 
