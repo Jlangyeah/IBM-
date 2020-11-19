@@ -208,27 +208,8 @@
 
         });
 
-        //注册的输入密码验证
-        $("#register_pwd").blur(function() {
-            var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
 
-            if (pattern.test($("#register_pwd").val())) {
 
-            } else {
-                alert("最少八位密码，必须包含大小写和特殊字符");
-            }
-        });
-
-        //注册的确认密码验证
-        $("#register_repwd").blur(function() {
-            var password = $("#register_pwd").val();
-            var repassword = $("#register_repwd").val();
-            if (password != "" && repassword != "" && repassword == password) {
-
-            } else {
-                alert("密码或确认密码为空 或者 两次输入的密码不一致")
-            }
-        });
 
 
 
@@ -240,17 +221,30 @@
             var reg_id = $.trim($("#register_id").val());
             var reg_name = $.trim($("#register_name").val());
             var phone = $.trim($("#phone").val());
-            if (password != "" && repassword != "" && repassword == password && reg_id != "" && phone != "" && reg_name != "") {
-                $.ajax({
-                    type: 'POST',
-                    url: '',
-                    data: $("#register_form").serialize(),
-                    success: function() {
-                        $("#login").css("display", "block");
-                        $("#register").css("display", "none");
-                        alert("注册成功，请登陆")
+            var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
+
+            if (password != "" && repassword != "" && reg_id != "" && phone != "" && reg_name != "") {
+
+                if (pattern.test($("#register_pwd").val())) { //注册的输入密码验证
+                    if (repassword == password) { //验证确认密码与输入密码一致
+                        $.ajax({
+                            type: 'POST',
+                            url: '',
+                            data: $("#register_form").serialize(),
+                            success: function() {
+                                $("#login").css("display", "block");
+                                $("#register").css("display", "none");
+                                alert("注册成功，请登陆")
+                            }
+                        })
+                    } else {
+                        alert("两次输入的密码不一致")
                     }
-                })
+                } else {
+                    alert("最少八位密码，必须包含大小写和特殊字符");
+                }
+
+
             } else {
                 alert("请再确认你所输入的信息是否有遗漏！")
             }
