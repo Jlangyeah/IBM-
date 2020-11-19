@@ -146,7 +146,7 @@
         <h3>账号注册</h3>
         <hr>
         <div class="register_form">
-            <form action="post">
+            <form id="register_form">
                 <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="register_id" maxlength="30" name="userid" placeholder="请 输 入 ID">
                 <br><br>
                 <label for="">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="username">
@@ -184,6 +184,9 @@
                     },
                     success: function() {
                         alert("登陆成功")
+                    },
+                    error: function() {
+
                     }
                 })
             } else {
@@ -224,17 +227,18 @@
             var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
 
             if (password != "" && repassword != "" && reg_id != "" && phone != "" && reg_name != "") {
-
-                if (pattern.test($("#register_pwd").val())) { //注册的输入密码验证
+                //pattern.test($("#register_pwd").val())
+                if (true) { //注册的输入密码验证
                     if (repassword == password) { //验证确认密码与输入密码一致
                         $.ajax({
-                            type: 'POST',
-                            url: '',
+                            type: 'GET',
+                            url: 'http://192.168.0.88:8080/user/register',
                             data: $("#register_form").serialize(),
-                            success: function() {
+                            success: function(msg) {
+
                                 $("#login").css("display", "block");
                                 $("#register").css("display", "none");
-                                alert("注册成功，请登陆")
+                                alert("注册成功，请登陆");
                             }
                         })
                     } else {
