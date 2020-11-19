@@ -65,12 +65,17 @@
             maxlength: 10;
         }
         
-        #login>.login_form button {
+        #submit1 {
             font-size: 22px;
             padding: 5px 20px;
             margin-left: 340px;
             background-color: skyblue;
             border-radius: 15px 15px 15px 15px;
+        }
+        
+        .login_form>p {
+            color: skyblue;
+            margin-left: 450px;
         }
         
         #register {
@@ -133,6 +138,7 @@
 
             </form>
             <button id="submit1">登陆</button>
+            <p>若无账号，请先点击“注册”</p>
         </div>
 
     </div>
@@ -181,7 +187,15 @@
                     }
                 })
             } else {
-                alert("请检查输入的登陆ID和密码是否出错！")
+                if (login_pwd != "") {
+                    alert("请输入登陆ID")
+                } else if (login_id != "") {
+                    alert("请输入密码")
+
+                } else {
+                    alert("请检查输入的登陆ID和密码！")
+                }
+
             }
 
         });
