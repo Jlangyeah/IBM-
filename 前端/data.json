@@ -2,23 +2,13 @@
     "total": "",
     "rows": [{
         "id": "1",
+        "xuehao": "111",
         "name": "小明",
-        "price": "1$"
-    }, {
-        "id": "1",
-        "name": "wang小明",
-        "price": "2$"
-    }, {
-        "id": "1",
-        "name": "li小明",
-        "price": "5$"
-    }, {
-        "id": "1",
-        "name": "小明1",
-        "price": "1$"
-    }, {
-        "id": "1",
-        "name": "小明3",
-        "price": "1$"
+        "birth": "3221321",
+        "sex": "man",
+        "phone": "32121",
+        "class": "21",
+        "major": "saiu",
+        "do": "sda"
     }]
 }

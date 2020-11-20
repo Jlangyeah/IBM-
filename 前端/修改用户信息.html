@@ -11,8 +11,9 @@
             width: 100%;
             height: auto;
         }
+
         /* 背景 */
-        
+
         .bg {
             position: absolute;
             width: 100%;
@@ -20,31 +21,33 @@
             background-color: #d6e0ff;
             /* background-color: #dadaff; */
         }
+
         /* 表头 */
-        
+
         .header {
             margin: 0;
         }
-        
+
         .title {
             text-align: center;
             font-size: 30px;
             font-weight: bold;
         }
-        
+
         .menu-box {
             height: 30px;
             margin-left: 100px;
             margin-top: 5px;
             margin-right: 100px;
         }
+
         /* 菜单栏 */
-        
+
         .menu {
             position: relative;
             display: inline-block;
         }
-        
+
         .list {
             display: none;
             /* position: relative; */
@@ -55,16 +58,16 @@
             list-style: none;
             padding: 12px 16px;
         }
-        
+
         li {
             margin-top: 20px;
         }
-        
+
         .list a {
             text-decoration: none;
             color: gray;
         }
-        
+
         .menu-btn {
             width: 200px;
             height: 40px;
@@ -73,17 +76,18 @@
             border-radius: 5%;
             float: left;
         }
-        
+
         .menu:hover .list {
             display: block;
         }
-        
+
         span.welcome {
             float: right;
             color: rgb(185, 26, 185);
         }
+
         /* 退出按钮 */
-        
+
         .exit-btn {
             float: right;
             padding-top: 0;
@@ -95,16 +99,16 @@
             border-radius: 10%;
             background-color: white;
         }
-        
+
         .exit-btn:hover {
             background-color: #1890ff;
             color: white;
             border: none;
             border-radius: 10%;
         }
+
         /* 内容 */
         /* 整体 */
-        
         .box {
             margin-top: 10px;
             margin-left: 10%;
@@ -114,7 +118,7 @@
             background-color: #d6e0ff;
             /* background-color: #dadaff; */
         }
-        
+
         .box-title {
             text-align: center;
             /* padding-top: 5px; */
@@ -124,7 +128,7 @@
             color: rgb(61, 60, 60);
             border-bottom: 1px dashed gray;
         }
-        
+
         .m2,
         .m3,
         .m4,
@@ -133,18 +137,18 @@
             text-align: center;
             margin-top: 50px;
         }
-        
+
         .m1 {
             text-align: center;
         }
-        
+
         label:before {
             display: inline-block;
             text-align: right;
             content: '*';
             color: red;
         }
-        
+
         .confirm {
             width: 80px;
             height: 30px;
@@ -164,8 +168,8 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
-                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
+                        <li><a href="./modify.html">修改用户信息</a></li>
+                        <li><a href="./add_stu.html">新增学生信息</a></li>
                         <li><a href="./查询.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
@@ -214,33 +218,33 @@
 
     <script type="text/javascript">
         //用户名验证
-        document.form1.username.onkeyup = function() {
-                var reg = /[\u4E00-\u9FA5]/;
-                if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("namemsg").innerHTML = "输入正确";
-                } else {
-                    document.getElementById("namemsg").innerHTML = "输入错误";
-                }
+        document.form1.username.onkeyup = function () {
+            var reg = /[\u4E00-\u9FA5]/;
+            if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                document.getElementById("namemsg").innerHTML = "输入正确";
+            } else {
+                document.getElementById("namemsg").innerHTML = "输入错误";
             }
-            //密码验证
-        document.form1.pwd.onkeyup = function() {
-                var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
-                if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("pwdmsg").innerHTML = "输入正确";
-                } else {
-                    document.getElementById("pwdmsg").innerHTML = "输入错误";
-                }
+        }
+        //密码验证
+        document.form1.pwd.onkeyup = function () {
+            var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
+            if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                document.getElementById("pwdmsg").innerHTML = "输入正确";
+            } else {
+                document.getElementById("pwdmsg").innerHTML = "输入错误";
             }
-            //确认密码
-        document.form1.pwd1.onkeyup = function() {
-                if (this.value == document.form1.pwd.value && this.value != "") {
-                    document.getElementById("pwd1msg").innerHTML = "输入正确";
-                } else {
-                    document.getElementById("pwd1msg").innerHTML = "密码不符";
-                }
+        }
+        //确认密码
+        document.form1.pwd1.onkeyup = function () {
+            if (this.value == document.form1.pwd.value && this.value != "") {
+                document.getElementById("pwd1msg").innerHTML = "输入正确";
+            } else {
+                document.getElementById("pwd1msg").innerHTML = "密码不符";
             }
-            //手机号验证
-        document.form1.phone.onkeyup = function() {
+        }
+        //手机号验证
+        document.form1.phone.onkeyup = function () {
             var reg2 = /^(13|14|15|17|18)[0-9]{9}/;
             if (reg2.test(this.value) && this.value.length == 11) {
                 document.getElementById("iphone").innerHTML = "输入正确";

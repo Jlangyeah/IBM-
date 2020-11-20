@@ -11,12 +11,21 @@
     <script src="js/js/bootstrap.min.js"></script>
     <script src="js/bs-table/bootstrap-table.min.js"></script>
     <script src="js/bs-table/bootstrap-table-zh-CN.min.js"></script>
+    <style>
+        body {
+            background: lightblue;
+        }
+        
+        .box-title {
+            margin-left: 30px;
+        }
+    </style>
 
 </head>
 
 <body>
     <div class="bg">
-        <p class="box-title">查询结果</p>
+        <h3 class="box-title">学生信息明细</h3>
         <div class="box">
             <table id="bsTable"></table>
         </div>
@@ -31,32 +40,50 @@
     </div>
     <script>
         /*点击弹出按钮*/
-        function popBox() {
-            var popBox = document.getElementById("popBox");
-            popBox.style.display = "block";
-        };
+        // function popBox() {
+        //     var popBox = document.getElementById("popBox");
+        //     popBox.style.display = "block";
+        // };
 
         /*点击关闭按钮*/
-        function closeBox() {
-            var popBox = document.getElementById("popBox");
-            popBox.style.display = "none";
-        }
+        // function closeBox() {
+        //     var popBox = document.getElementById("popBox");
+        //     popBox.style.display = "none";
+        // }
         $(function() {
             $('#bsTable').bootstrapTable({
-                url: 'http://192.168.0.88:8080/user/getTableData2',
+                url: 'http://192.168.0.88:8058/student/query',
                 pageNumber: 1, //初始化加载第一页，默认第一页
-                pageSize: 5, //每页的记录行数（*）,
+                pageSize: 2, //每页的记录行数（*）,
                 pagination: true,
                 search: true,
                 columns: [{
                     field: 'id',
-                    title: 'title'
+                    title: '序号'
+                }, {
+                    field: "xuehao",
+                    title: "number"
                 }, {
                     field: 'name',
-                    title: 'Name'
+                    title: '学生姓名'
                 }, {
-                    field: 'price',
-                    title: 'Price'
+                    field: 'birth',
+                    title: '出生年月日'
+                }, {
+                    field: 'sex',
+                    title: '性别'
+                }, {
+                    field: 'phone',
+                    title: '手机号码'
+                }, {
+                    field: 'class',
+                    title: '班级'
+                }, {
+                    field: 'major',
+                    title: '系部'
+                }, {
+                    field: 'do',
+                    title: '操作'
                 }]
             })
         });
