@@ -7,13 +7,128 @@
     <title>信息统计</title>
     <style>
         body {
-            background-color: rgb(236, 245, 250);
+            margin: 0;
+            width: 100%;
+            height: 100%;
         }
-        
-        h3 {
-            padding-left: 30px;
+
+        /* 背景 */
+
+        .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #d6e0ff;
+            /* background-color: #dadaff; */
         }
-        
+
+        /* 表头 */
+
+        .header {
+            margin: 0;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .menu-box {
+            height: 30px;
+            margin-left: 100px;
+            margin-top: 5px;
+            margin-right: 100px;
+        }
+
+        /* 菜单栏 */
+
+        .menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .list {
+            display: none;
+            /* position: relative; */
+            background-color: #f9f9f9;
+            min-width: 160px;
+            border: 1px solid rgb(224, 219, 219);
+            /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+            list-style: none;
+            padding: 12px 16px;
+        }
+
+        li {
+            margin-top: 20px;
+        }
+
+        .list a {
+            text-decoration: none;
+            color: gray;
+        }
+
+        .menu-btn {
+            width: 200px;
+            height: 40px;
+            border: 1px solid rgb(224, 219, 219);
+            background-color: white;
+            border-radius: 5%;
+            float: left;
+        }
+
+        .menu:hover .list {
+            display: block;
+        }
+
+        span.welcome {
+            float: right;
+            color: rgb(185, 26, 185);
+        }
+
+        /* 退出按钮 */
+
+        .exit-btn {
+            float: right;
+            padding-top: 0;
+            width: 50px;
+            height: 20px;
+            /* margin-bottom: 5px; */
+            margin-left: 20px;
+            border: 2px solid #1890ff;
+            border-radius: 10%;
+            background-color: white;
+        }
+
+        .exit-btn:hover {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 10%;
+        }
+
+        /* 内容 */
+        /* 整体 */
+        .box {
+            margin-top: 10px;
+            margin-left: 10%;
+            width: 80%;
+            height: 40%;
+            display: box;
+            background-color: #d6e0ff;
+            /* background-color: #dadaff; */
+        }
+
+        .box-title {
+            text-align: center;
+            /* padding-top: 5px; */
+            padding-bottom: 10px;
+            font-size: large;
+            font-weight: bold;
+            color: rgb(61, 60, 60);
+            border-bottom: 1px dashed gray;
+        }
+
         table {
             background-color: white;
             width: 100%;
@@ -21,19 +136,19 @@
             border-collapse: collapse;
             text-align: center;
         }
-        
+
         table tr {
             margin: 0%;
         }
-        
+
         table tr td {
             border: 1px solid rgb(199, 215, 245);
         }
-        
+
         .one {
             background-color: rgb(174, 199, 209);
         }
-        
+
         .three {
             margin-top: 20px;
             margin-left: 30px;
@@ -42,33 +157,52 @@
 </head>
 
 <body>
-    <h3>信息统计</h3>
-    <table>
-        <tr class="one">
-            <td>170808班</td>
-            <td>170809班</td>
-            <td>190808班</td>
-            <td>经济管理</td>
-            <td>计算机</td>
-            <td>外国语</td>
-            <td>物理</td>
-            <td>男</td>
-            <td>女</td>
-        </tr>
-        <tr class="two">
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-            <td>1000人</td>
-        </tr>
-    </table>
-    <div class="three">合计：共10000人</div>
-
+    <div class="bg">
+        <div class="header">
+            <p class="title">学生信息管理系统</p>
+            <div class="menu-box">
+                <div class="menu">
+                    <button type="button" class="menu-btn">目录</button>
+                    <ul class="list">
+                        <li><a href="./学生信息列表.html">学生信息列表</a></li>
+                        <li><a href="./modify.html">修改用户信息</a></li>
+                        <li><a href="./add_stu.html">新增学生信息</a></li>
+                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./学生信息统计.html">学生信息统计</a></li>
+                    </ul>
+                </div>
+                <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
+                <span class="welcome">/Welcome,"username"</span>
+            </div>
+        </div>
+        <div class="box">
+            <p class="box-title">学生信息统计</p>
+            <table>
+                <tr class="one">
+                    <td>170808班</td>
+                    <td>170809班</td>
+                    <td>190808班</td>
+                    <td>经济管理</td>
+                    <td>计算机</td>
+                    <td>外国语</td>
+                    <td>物理</td>
+                    <td>男</td>
+                    <td>女</td>
+                </tr>
+                <tr class="two">
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                    <td>1000人</td>
+                </tr>
+            </table>
+            <div class="three">合计：共10000人</div>
+        </div>
 </body>
 
 </html>

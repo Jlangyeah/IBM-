@@ -10,23 +10,17 @@
             margin: 0px;
             padding: 0px;
         }
-        
+
         body {
-            background: skyblue;
+            background-color: #d6e0ff
         }
-        
-        h1 {
-            width: 390px;
-            /*height: 100px;*/
-            /*border: 1px solid #000;*/
-            color: blueviolet;
-            margin: 50px auto 0px;
-        }
-        
+
+
+
         ul {
             float: right;
         }
-        
+
         ul>li {
             font-size: 30px;
             /*border: 1px solid #000;*/
@@ -34,50 +28,92 @@
             float: left;
             margin-right: 50px;
         }
-        
+
         #login {
-            width: 1000px;
-            height: 480px;
+            width: 50%;
+            height: 20%;
             background: white;
-            margin: 60px auto 0px;
-            padding-top: 15px;
+            margin-top: 10%;
+            margin-left: 25%;
+
         }
-        
-        #login>h3 {
-            margin: 0px 0 15px 30px;
+
+        .title {
+            color: #1890ff;
+            display: flex;
+            font-size: 50px;
+            padding-top: 20px;
+            justify-content: center;
         }
-        
-        #login>.login_form {
+
+        .login_form {
             /* border: 1px solid #000; */
             width: 700px;
             height: 300px;
-            margin: 30px auto;
-            padding-top: 80px;
+            margin: 50px auto;
+            /* border: 1px solid red; */
+            /* padding-top: 80px; */
         }
-        
-        #login>.login_form label {
+
+        .login_form form {
+            width: 400px;
+            text-align: right;
+            margin-left: 13%;
+            /* border: 1px solid black; */
+        }
+
+        .login_form label {
             font-size: 25px;
-            margin-left: 180px;
+            margin-right: 10px;
         }
-        
-        #login>.login_form input {
+
+        .login_form input {
             font-size: 22px;
             maxlength: 10;
         }
-        
-        #submit1 {
+
+        /* #submit1 {
             font-size: 22px;
             padding: 5px 20px;
             margin-left: 340px;
+            margin-bottom: 5px;
             background-color: skyblue;
             border-radius: 15px 15px 15px 15px;
+
+        } */
+        .sub {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+
         }
-        
+
+        #submit1,
+        #submit2 {
+            width: 130px;
+            height: 40px;
+            font-size: 30px;
+            text-align: center;
+            margin-right: 10px;
+            border-radius: 5%;
+            background-color: #1890ff;
+            border: none;
+            color: white;
+        }
+
+        #submit1:hover,
+        #submit2:hover {
+            background-color: white;
+            border: 2px solid #1890ff;
+            color: black;
+            border-radius: 5%;
+        }
+
         .login_form>p {
             color: skyblue;
             margin-left: 450px;
         }
-        
+
         #register {
             width: 1000px;
             height: 480px;
@@ -86,11 +122,11 @@
             display: none;
             padding-top: 15px;
         }
-        
+
         #register>h3 {
             margin: 0px 0 15px 30px;
         }
-        
+
         #register>.register_form {
             /* border: 1px solid #000; */
             width: 700px;
@@ -98,16 +134,16 @@
             margin: 30px auto;
             padding-top: 30px;
         }
-        
+
         #register>.register_form label {
             font-size: 25px;
             margin-left: 180px;
         }
-        
+
         #register>.register_form input {
             font-size: 22px;
         }
-        
+
         #register>.register_form button {
             font-size: 22px;
             padding: 5px 20px;
@@ -119,7 +155,7 @@
 </head>
 
 <body>
-    <h1>欢迎来到学生信息管理系统</h1>
+
     <ul>
         <li class="login">登录</li>
         <li class="register">注册</li>
@@ -127,17 +163,19 @@
 
 
     <div id="login">
-        <h3>登陆</h3>
-        <hr>
+        <p class="title">欢迎来到学生信息管理系统</p>
         <div class="login_form">
             <form action="post">
-                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="login_id" maxlength="30" type="text" name="userid">
+                <label for="">登陆ID:</label><input id="login_id" maxlength="30" type="text" name="userid">
                 <br><br><br>
-                <label for="">输入密码:</label>&nbsp;<input id="login_pwd" type="password" maxlength="30" name="passwd">
+                <label for="">输入密码:</label><input id="login_pwd" type="password" maxlength="30" name="passwd">
                 <br><br><br>
 
             </form>
-            <button id="submit1">登陆</button>
+            <div class="sub">
+                <button id="submit1">登陆</button>
+                <button id="submit2">注册</button>
+            </div>
             <p>若无账号，请先点击“注册”</p>
         </div>
 
@@ -146,16 +184,22 @@
         <h3>账号注册</h3>
         <hr>
         <div class="register_form">
-            <form id="register_form">
-                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="register_id" maxlength="30" name="userid" placeholder="请 输 入 ID">
+            <form action="post">
+                <label for="">登陆ID:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="register_id"
+                    maxlength="30" name="userid" placeholder="请 输 入 ID">
                 <br><br>
-                <label for="">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="username">
+                <label for="">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                    maxlength="20" id="register_name" placeholder="请 输 入 姓 名"
+                    onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="username">
                 <br><br>
-                <label for="">手机号:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="phone" type="number" oninput="if(value.length>11)value=value.slice(0,11)" name="phone" placeholder="请 输 入 手 机 号">
+                <label for="">手机号:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="phone" type="number"
+                    oninput="if(value.length>11)value=value.slice(0,11)" name="phone" placeholder="请 输 入 手 机 号">
                 <br><br>
-                <label for="">输入密码:</label>&nbsp;<input id="register_pwd" type="password" maxlength="30" name="passwd" placeholder="请 输 入 密 码">
+                <label for="">输入密码:</label>&nbsp;<input id="register_pwd" type="password" maxlength="30" name="passwd"
+                    placeholder="请 输 入 密 码">
                 <br><br>
-                <label for="">确认密码:</label>&nbsp;<input id="register_repwd" type="password" maxlength="30" name="repasswd" placeholder="请 再 次 输 入 密 码">
+                <label for="">确认密码:</label>&nbsp;<input id="register_repwd" type="password" maxlength="30"
+                    name="repasswd" placeholder="请 再 次 输 入 密 码">
                 <br><br>
 
             </form>
@@ -164,14 +208,14 @@
     </div>
     <script type="text/javascript">
         //登陆点击
-        $(".login").click(function() {
+        $(".login").click(function () {
             $("#login").css("display", "block");
             $("#register").css("display", "none");
 
         });
 
         //登陆提交
-        $("#submit1").click(function() {
+        $("#submit1").click(function () {
             var login_id = $.trim($("#login_id").val());
             var login_pwd = $.trim($("#login_pwd").val());
             if (login_pwd != "" && login_id != "") {
@@ -182,11 +226,8 @@
                         userid: $("#login_id").val(),
                         passwd: $("#login_pwd").val()
                     },
-                    success: function() {
+                    success: function () {
                         alert("登陆成功")
-                    },
-                    error: function() {
-
                     }
                 })
             } else {
@@ -205,7 +246,7 @@
 
 
         //注册点击
-        $(".register").click(function() {
+        $(".register").click(function () {
             $("#login").css("display", "none");
             $("#register").css("display", "block");
 
@@ -218,7 +259,7 @@
 
 
         //注册的提交
-        $("#submit2").click(function() {
+        $("#submit2").click(function () {
             var password = $.trim($("#register_pwd").val());
             var repassword = $.trim($("#register_repwd").val());
             var reg_id = $.trim($("#register_id").val());
@@ -227,18 +268,17 @@
             var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
 
             if (password != "" && repassword != "" && reg_id != "" && phone != "" && reg_name != "") {
-                //pattern.test($("#register_pwd").val())
-                if (true) { //注册的输入密码验证
+
+                if (pattern.test($("#register_pwd").val())) { //注册的输入密码验证
                     if (repassword == password) { //验证确认密码与输入密码一致
                         $.ajax({
-                            type: 'GET',
-                            url: 'http://192.168.0.88:8080/user/register',
+                            type: 'POST',
+                            url: '',
                             data: $("#register_form").serialize(),
-                            success: function(msg) {
-
+                            success: function () {
                                 $("#login").css("display", "block");
                                 $("#register").css("display", "none");
-                                alert("注册成功，请登陆");
+                                alert("注册成功，请登陆")
                             }
                         })
                     } else {
