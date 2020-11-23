@@ -10,10 +10,11 @@
             margin: 0px;
             padding: 0px;
         }
-        
+
         body {
             background-color: #d6e0ff
         }
+
         /* ul {
             float: right;
         }
@@ -25,7 +26,7 @@
             float: left;
             margin-right: 50px;
         } */
-        
+
         #login {
             width: 650px;
             height: 300px;
@@ -33,7 +34,7 @@
             margin: 13% auto;
             /* border: 1px solid red; */
         }
-        
+
         .title {
             color: #1890ff;
             display: flex;
@@ -41,7 +42,7 @@
             padding-top: 20px;
             justify-content: center;
         }
-        
+
         .login_form {
             /* border: 1px solid #000; */
             width: 100%;
@@ -50,23 +51,24 @@
             /* border: 1px solid red; */
             /* padding-top: 80px; */
         }
-        
+
         .login_form form {
             width: 400px;
             text-align: right;
             margin-left: 8px;
             /* border: 1px solid black; */
         }
-        
+
         .login_form label {
             font-size: 15px;
             margin-right: 10px;
         }
-        
+
         .login_form input {
             font-size: 10px;
             maxlength: 10;
         }
+
         /* #submit1 {
             font-size: 22px;
             padding: 5px 20px;
@@ -76,7 +78,7 @@
             border-radius: 15px 15px 15px 15px;
 
         } */
-        
+
         .sub {
             width: 100%;
             margin-top: 20px;
@@ -84,7 +86,7 @@
             justify-content: center;
             /* border: 1px solid black; */
         }
-        
+
         #submit1,
         #submit2,
         #submit3,
@@ -99,7 +101,7 @@
             border: none;
             color: white;
         }
-        
+
         #submit1:hover,
         #submit2:hover,
         #submit3:hover,
@@ -109,13 +111,13 @@
             color: black;
             border-radius: 5%;
         }
-        
+
         .login_form>p {
             font-size: 10px;
             color: skyblue;
             margin-left: 350px;
         }
-        
+
         #register {
             width: 650px;
             height: 380px;
@@ -127,11 +129,11 @@
             padding-top: 15px;
             /* border: 1px solid red; */
         }
-        
+
         #register>h3 {
             margin: 0px 0 10px 30px;
         }
-        
+
         .register_form {
             /* border: 1px solid #000; */
             width: 100%;
@@ -140,22 +142,23 @@
             padding-top: 20px;
             /* border: 1px solid blue; */
         }
-        
+
         .register_form form {
             width: 450px;
             text-align: right;
             /* margin-left: 8px; */
             /* border: 1px solid black; */
         }
-        
+
         .register_form label {
             font-size: 18px;
             margin-right: 10px;
         }
-        
+
         .register_form input {
             font-size: 15px;
         }
+
         /* #register>.register_form button {
             font-size: 22px;
             padding: 5px 20px;
@@ -178,9 +181,9 @@
         <p class="title">欢迎来到学生信息管理系统</p>
         <div class="login_form">
             <form action="post">
-                <label for="">登陆ID:</label><input id="login_id" maxlength="30" type="text" name="userid">
+                <label for="">登陆ID:</label><input id="login_id" maxlength="30" type="text" name="id">
                 <br><br>
-                <label for="">输入密码:</label><input id="login_pwd" type="password" maxlength="30" name="passwd">
+                <label for="">输入密码:</label><input id="login_pwd" type="password" maxlength="30" name="password">
                 <br><br>
 
             </form>
@@ -197,15 +200,21 @@
         <hr>
         <div class="register_form">
             <form action="post">
-                <label for="">登陆ID:</label><input type="text" id="register_id" maxlength="30" name="userid" placeholder="请 输 入 ID">
+                <label for="">登陆ID:</label><input type="text" id="register_id" maxlength="30" name="id"
+                    placeholder="请 输 入 ID">
                 <br><br>
-                <label for="">姓名:</label><input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="username">
+                <label for="">姓名:</label><input maxlength="20" id="register_name" placeholder="请 输 入 姓 名"
+                    onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="name">
                 <br><br>
-                <label for="">手机号:</label><input id="phone" type="text" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="value=value.replace(/[^\d]/g,'')" name="phone" placeholder="请 输 入 手 机 号">
+                <label for="">手机号:</label><input id="phone" type="text"
+                    oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="value=value.replace(/[^\d]/g,'')"
+                    name="phone" placeholder="请 输 入 手 机 号">
                 <br><br>
-                <label for="">输入密码:</label><input id="register_pwd" type="password" maxlength="30" name="passwd" placeholder="请 输 入 密 码">
+                <label for="">输入密码:</label><input id="register_pwd" type="password" maxlength="30" name="password"
+                    placeholder="请 输 入 密 码">
                 <br><br>
-                <label for="">确认密码:</label><input id="register_repwd" type="password" maxlength="30" name="repasswd" placeholder="请 再 次 输 入 密 码">
+                <label for="">确认密码:</label><input id="register_repwd" type="password" maxlength="30" name="repasswd"
+                    placeholder="请 再 次 输 入 密 码">
                 <br><br>
 
             </form>
@@ -217,27 +226,37 @@
     </div>
     <script type="text/javascript">
         //登陆点击
-        $("#submit4").click(function() {
+        $("#submit4").click(function () {
             $("#login").css("display", "block");
             $("#register").css("display", "none");
 
         });
 
         //登陆提交
-        $("#submit1").click(function() {
+        $("#submit1").click(function () {
             var login_id = $.trim($("#login_id").val());
             var login_pwd = $.trim($("#login_pwd").val());
             if (login_pwd != "" && login_id != "") {
                 $.ajax({
                     type: 'POST',
-                    url: '',
+                    url: 'http://localhost:8058/student/user/login',
                     data: {
-                        userid: $("#login_id").val(),
-                        passwd: $("#login_pwd").val()
+                        id: $("#login_id").val(),
+
+                        password: $("#login_pwd").val()
                     },
-                    success: function() {
-                        alert("登陆成功")
+                    success: function (data) {
+                        var dataObj = eval("(" + data + ")");
+                        alert(dataObj.msg);
+                        if (dataObj.code == 1) {
+                            $(location).attr('href', '学生信息统计.html');
+                        }
                     }
+                    //                  error:function(){
+                    //                  	if(code==0){
+                    //                  		alert ("登陆ID或者密码错误");
+                    //                  	}
+                    //                  }
                 })
             } else {
                 if (login_pwd != "") {
@@ -255,7 +274,7 @@
 
 
         //注册点击
-        $("#submit2").click(function() {
+        $("#submit2").click(function () {
             $("#login").css("display", "none");
             $("#register").css("display", "block");
 
@@ -263,32 +282,48 @@
 
 
 
-
-
-
-
         //注册的提交
-        $("#submit3").click(function() {
+        $("#submit3").click(function () {
             var password = $.trim($("#register_pwd").val());
             var repassword = $.trim($("#register_repwd").val());
             var reg_id = $.trim($("#register_id").val());
             var reg_name = $.trim($("#register_name").val());
             var phone = $.trim($("#phone").val());
             var pattern = /(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}/;
-
+            var code;
+            // var strJSON = "{name:'json name'}";//得到的JSON
+            // var obj = new Function("return" + strJSON)();//转换后的JSON对象
+            // alert(obj.code);//json name
             if (password != "" && repassword != "" && reg_id != "" && phone != "" && reg_name != "") {
 
                 if (pattern.test($("#register_pwd").val())) { //注册的输入密码验证
                     if (repassword == password) { //验证确认密码与输入密码一致
                         $.ajax({
                             type: 'POST',
-                            url: 'http://192.168.0.88:8058/student/user/register',
-                            data: $("#register_form").serialize(),
-                            success: function() {
-                                $("#login").css("display", "block");
-                                $("#register").css("display", "none");
-                                alert("注册成功，请登陆")
+                            url: 'http://localhost:8058/student/user/register',
+                            data: {
+                                id: $("#register_id").val(),
+                                name: $("#register_name").val(),
+                                phone: $("#phone").val(),
+                                password: $("#register_pwd").val()
+                            },
+
+                            success: function (data) {
+
+                                //     alert(response);
+                                var dataObj = eval("(" + data + ")");
+                                alert(dataObj.msg);
+                                if (dataObj.code == 1) {
+                                    $("#login").css("display", "block");
+                                    $("#register").css("display", "none");
+                                    // alert("注册成功，请登陆")
+                                }
                             }
+                            //                          error:function(){
+                            //                          	if(code==0){
+                            //                          		alert ("登陆ID或者密码错误");
+                            //                          	}
+                            //                          }
                         })
                     } else {
                         alert("两次输入的密码不一致")

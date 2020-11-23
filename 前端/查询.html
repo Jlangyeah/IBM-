@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.5.1.js"></script>
     <title>查询</title>
     <style>
         body {
@@ -12,39 +13,42 @@
             height: auto;
             overflow: scroll;
         }
+
         /* 背景 */
-        
+
         .bg {
             position: fixed;
             width: 100%;
             height: 100%;
             background-color: white;
         }
+
         /* 表头 */
-        
+
         .header {
             margin: 0;
         }
-        
+
         .title {
             text-align: center;
             font-size: 30px;
             font-weight: bold;
         }
-        
+
         .menu-box {
             height: 60px;
             margin-left: 100px;
             margin-top: 5px;
             margin-right: 100px;
         }
+
         /* 菜单栏 */
-        
+
         .menu {
             position: relative;
             display: inline-block;
         }
-        
+
         .list {
             display: none;
             /* position: relative; */
@@ -55,16 +59,16 @@
             list-style: none;
             padding: 12px 16px;
         }
-        
+
         li {
             margin-top: 20px;
         }
-        
+
         .list a {
             text-decoration: none;
             color: gray;
         }
-        
+
         .menu-btn {
             width: 200px;
             height: 40px;
@@ -73,17 +77,18 @@
             border-radius: 5%;
             float: left;
         }
-        
+
         .menu:hover .list {
             display: block;
         }
-        
+
         span.welcome {
             float: right;
             color: rgb(185, 26, 185);
         }
+
         /* 退出按钮 */
-        
+
         .exit-btn {
             float: right;
             padding-top: 0;
@@ -95,16 +100,17 @@
             border-radius: 10%;
             background-color: white;
         }
-        
+
         .exit-btn:hover {
             background-color: #1890ff;
             color: white;
             border: none;
             border-radius: 10%;
         }
+
         /* 内容 */
         /* 整体 */
-        
+
         .box {
             margin-top: 10px;
             margin-left: 10%;
@@ -114,8 +120,9 @@
             background-color: #d6e0ff;
             /* background-color: #dadaff; */
         }
+
         /* 框标题 */
-        
+
         .box-title {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -125,24 +132,27 @@
             color: rgb(61, 60, 60);
             border-bottom: 1px dashed gray;
         }
+
         /* 填写框 */
-        
+
         .select {
             padding-top: 2%;
             display: block;
             column-count: 3;
             text-align: center;
         }
+
         /* 文本框 */
-        
+
         .text-box {
             width: 140px;
             height: 25px;
             border: 1px solid rgb(224, 219, 219);
             border-radius: 5%;
         }
+
         /* 选择栏 */
-        
+
         .select-box {
             width: 147px;
             height: 28px;
@@ -150,15 +160,17 @@
             border: 1px solid rgb(224, 219, 219);
             border-radius: 5%;
         }
+
         /* 按钮框 */
-        
+
         .btn-box {
             display: box;
             padding-top: 4%;
             text-align: center;
         }
+
         /* 按钮 */
-        
+
         .btn {
             width: 100px;
             height: 30px;
@@ -167,7 +179,7 @@
             border-radius: 5%;
             background-color: white;
         }
-        
+
         .btn:hover {
             background-color: #1890ff;
             color: white;
@@ -199,7 +211,7 @@
         <div class="box">
             <p class="box-title">查询条件</p>
             <form class="select">
-                <span>姓名: </span><input class="text-box" type="text" id="name" maxlength="30" />
+                <span>姓名: </span><input class="text-box" type="text" id="name" maxlength="30" name="name" />
                 <p><span>性别: </span><select class="select-box" id="sex">
                         <option value=""></option>
                         <option value="男">男</option>
@@ -228,25 +240,32 @@
     </div>
     <script>
         function selectBox() {
-            var list = ["李丽", "刘强", "李强 "];
-            var selname = document.getElementById("name").value;
-            var len = list.length;
-            var arr = [];
-            // 输入关键词
-            var reg = new RegExp(selname);
-            for (var i = 0; i < len; i++) {
-                if (selname == null || selname == "") {
-                    alert("请输入查询条件")
-                    return false;
-                }
-                //获取列表
-                else if (list[i].match(reg)) {
-                    arr.push(list[i]);
-                    // console.log(arr);
-                    alert(arr);
-                }
 
-            }
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8058/student/query',
+                data: {
+                    name: $("#name").val(),
+                    stunum: $("#id").val(),
+                    clazz: $("#class").val(),
+                    gender: $("#sex").val(),
+                    dept: $("#major").val()
+
+                },
+                success: function (data) {
+                    alert("111");
+                    var dataObj = eval("(" + data + ")");
+                    alert(dataObj.msg);
+                    if (dataObj.code == 1) {
+                        $(location).attr('href', '表格2.html');
+                    }
+                },
+                error: function () {
+                    alert("999");
+                }
+            })
+
+
         }
 
         function deleteBox() {

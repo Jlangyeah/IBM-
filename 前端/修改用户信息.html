@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.5.1.js"></script>
     <title>修改学生信息</title>
     <style>
         body {
@@ -183,21 +184,21 @@
             <form action="" name="form1" onsubmit="return test()">
                 <div class="m1">
                     <label for="">登陆ID：</label>
-                    <input class="id" type="text" disabled="true">
+                    <input class="id" name="id" type="text" disabled="true">
                 </div>
                 <div class="m2">
                     <label for="">姓名：</label>
-                    <input name="username" type="text">
+                    <input name="name" id="name" type="text">
                     <span id="namemsg">*</span>
                 </div>
                 <div class="m3">
                     <label for="">手机号码：</label>
-                    <input name="phone" type="text">
+                    <input name="phone" id="phone" type="text">
                     <span id="iphone">*</span>
                 </div>
                 <div class="m4">
                     <label for="">修改密码：</label>
-                    <input name="pwd" type="password">
+                    <input name="password" id="passwd" type="password">
                     <span id="pwdmsg">*</span>
                 </div>
                 <div class="m5">
@@ -218,7 +219,7 @@
 
     <script type="text/javascript">
         //用户名验证
-        document.form1.username.onkeyup = function () {
+        document.form1.name.onkeyup = function () {
             var reg = /[\u4E00-\u9FA5]/;
             if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                 document.getElementById("namemsg").innerHTML = "输入正确";
@@ -227,7 +228,7 @@
             }
         }
         //密码验证
-        document.form1.pwd.onkeyup = function () {
+        document.form1.password.onkeyup = function () {
             var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
             if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                 document.getElementById("pwdmsg").innerHTML = "输入正确";
@@ -235,9 +236,9 @@
                 document.getElementById("pwdmsg").innerHTML = "输入错误";
             }
         }
-        //确认密码
+        //确认密码s
         document.form1.pwd1.onkeyup = function () {
-            if (this.value == document.form1.pwd.value && this.value != "") {
+            if (this.value == document.form1.password.value && this.value != "") {
                 document.getElementById("pwd1msg").innerHTML = "输入正确";
             } else {
                 document.getElementById("pwd1msg").innerHTML = "密码不符";
@@ -260,14 +261,14 @@
             var str = "输入正确"
             if (document.getElementById("namemsg").innerHTML !== str) {
                 document.getElementById("namemsg").innerHTML = "输入错误";
-                document.form1.username.focus();
-                document.form1.username.value = "";
+                document.form1.name.focus();
+                document.form1.name.value = "";
                 return false;
             }
             if (document.getElementById("pwdmsg").innerHTML !== str) {
                 document.getElementById("pwdmsg").innerHTML = "输入错误";
-                document.form1.pwd.focus();
-                document.form1.pwd.value = "";
+                document.form1.password.focus();
+                document.form1.password.value = "";
                 return false;
             }
             if (document.getElementById("pwd1msg").innerHTML !== str) {
@@ -283,6 +284,27 @@
                 return false;
             }
 
+
+            $(".confirm").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8058/student/user/modify',
+                    data: {
+                        name: $("#name").val(),
+                        id: $("#id").val(),
+                        password: $("#passwd").val(),
+                        phone: $("#phone").val(),
+
+
+                    },
+                    success: function (data) {
+                        var dataObj = eval("(" + data + ")");
+                        alert(dataObj.msg);
+                    }
+
+                })
+
+            })
         }
     </script>
 </body>
