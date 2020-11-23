@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.5.1.js"></script>
+    <title>修改学生</title>
+
+    <style>
+        body {
+            margin: 0;
+            width: 1350px;
+            height: auto;
+            min-width: 1350px;
+            overflow: scroll;
+        }
+        /* 背景 */
+        
+        .bg {
+            position: absolute;
+            width: 100%;
+            width: 1350px;
+            height: auto;
+            min-width: 1350px;
+            background-color: #d6e0ff;
+            /* background-color: #dadaff; */
+        }
+        /* 表头 */
+        
+        .header {
+            margin: 0;
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        
+        .menu-box {
+            height: 30px;
+            margin-left: 100px;
+            margin-top: 5px;
+            margin-right: 100px;
+        }
+        /* 菜单栏 */
+        
+        .menu {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .list {
+            display: none;
+            /* position: relative; */
+            background-color: #f9f9f9;
+            min-width: 160px;
+            border: 1px solid rgb(224, 219, 219);
+            /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+            list-style: none;
+            padding: 12px 16px;
+        }
+        
+        li {
+            margin-top: 20px;
+        }
+        
+        .list a {
+            text-decoration: none;
+            color: gray;
+        }
+        
+        .menu-btn {
+            width: 200px;
+            height: 40px;
+            border: 1px solid rgb(224, 219, 219);
+            background-color: white;
+            border-radius: 5%;
+            float: left;
+        }
+        
+        .menu:hover .list {
+            display: block;
+        }
+        
+        span.welcome {
+            float: right;
+            color: rgb(185, 26, 185);
+        }
+        /* 退出按钮 */
+        
+        .exit-btn {
+            float: right;
+            padding-top: 0;
+            width: 50px;
+            height: 20px;
+            /* margin-bottom: 5px; */
+            margin-left: 20px;
+            border: 2px solid #1890ff;
+            border-radius: 10%;
+            background-color: white;
+        }
+        
+        .exit-btn:hover {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 10%;
+        }
+        /* 内容 */
+        /* 整体 */
+        
+        .box {
+            margin-top: 10px;
+            width: 100%;
+            height: 40%;
+            display: box;
+            background-color: #d6e0ff;
+            /* background-color: #dadaff; */
+        }
+        
+        .box-title {
+            text-align: center;
+            /* padding-top: 5px; */
+            padding-bottom: 10px;
+            font-size: large;
+            font-weight: bold;
+            color: rgb(61, 60, 60);
+            /* border-bottom: 1px dashed gray; */
+        }
+        
+        #input1 {
+            margin-top: 5px;
+            height: 150px;
+        }
+        
+        #input2,
+        #input3 {
+            margin-top: 30px;
+        }
+        
+        #div1 {
+            margin-left: 200px;
+        }
+        
+        #div3 {
+            float: right;
+            margin-right: 200px;
+        }
+        
+        #div2 {
+            margin-left: 200px;
+        }
+        
+        #fileBtn {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+        
+        #fileBtn:hover {
+            cursor: pointer;
+        }
+        
+        .fileBtn {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed lightskyblue;
+            text-align: center;
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+        
+        .fileBtn p {
+            line-height: 60px;
+        }
+        
+        #img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            display: none;
+        }
+        
+        .img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .img-box {
+            margin-top: 80px;
+        }
+        
+        #div5 {
+            float: right;
+            margin-right: 200px;
+        }
+        
+        .confirm {
+            height: 40px;
+            width: 50px;
+            border-radius: 25px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="header">
+            <p class="title">学生信息管理系统</p>
+            <div class="menu-box">
+                <div class="menu">
+                    <button type="button" class="menu-btn">目录</button>
+                    <ul class="list">
+                        <li><a href="./学生信息列表.html">学生信息列表</a></li>
+                        <li><a href="./modify.html">修改用户信息</a></li>
+                        <li><a href="./add_stu.html">新增学生信息</a></li>
+                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./学生信息统计.html">学生信息统计</a></li>
+                    </ul>
+                </div>
+                <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
+                <span class="welcome">/Welcome！</span>
+            </div>
+        </div>
+        <div class="box">
+            <p class="box-title">修改学生信息</p>
+            <form action="" name="form2" onsubmit="return test()">
+                <div id="input1">
+                    </p>基本信息</p>
+                    <hr>
+                    <div style="display: inline-block;" id="div1">
+                        <p>学生姓名</p>
+                        <input type="text" name="name" id="stu_name" placeholder="请输入姓名"><br>
+                        <span id="namemsg"></span>
+                    </div>
+                    <div style="display: inline-block;" id="div2">
+                        <p>学号</p>
+                        <input type="text" name="stunum" id="xuehao" placeholder="请输入学号" maxlength="30"><br>
+                        <span id="nummsg"></span>
+                    </div>
+                    <div style="display: inline-block;" id="div3">
+                        <p>出生年月日</p>
+                        <input type="date" name="birth" id="time" style="width: 177px;">
+                    </div>
+                </div>
+
+
+                <div id="input2">
+                    <div style="display: inline-block;" id="div1">
+                        <p>性别</p>
+                        <select name="gender" id="sex" style="width: 177px;">
+                            <option value="男">男</option>
+                            </option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                    <div style="display: inline-block;" id="div2">
+                        <p>手机号码</p>
+                        <input type="text" name="phone" id="phone" placeholder="请输入手机号"><br>
+                        <span id="iphone"></span>
+                    </div>
+                    <div style="display: inline-block;" id="div5">
+                        <p>班级</p>
+                        <input type="text" name="clazz" id="cla" placeholder="请输入班级"><br>
+                        <span id="clamsg"></span>
+                    </div>
+                </div>
+
+                <div id="input3">
+                    <div style="display: inline-block;margin-left: 585px;" id="div4">
+                        <p>系部</p>
+                        <select name="dept" id="dept" style="width: 177px;">
+                            <option value="信息工程">信息工程</option>
+                            <option value="管理">管理</option>
+                            <option value="计算机">计算机</option>
+                            <option value="土木">土木</option>
+                        </select>
+                    </div>
+                    <div style="display: inline-block;" id="div3">
+                        <p>信息录入时间</p>
+                        <input type="text" name="" id="" disabled="true" style="background-color: gray;">
+                    </div>
+
+                </div>
+
+
+                <div id="input4">
+                    </p>学生照片</p>
+                    <hr>
+                    <div class="fileBtn">
+                        <p>点击添加图片</p>
+                        <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" multiple="multiple" />
+                        <!--单张图片容器-->
+                        <img src="" alt="" id="img">
+                    </div>
+                </div>
+
+            </form>
+            <button class="confirm">提交</button>
+        </div>
+    </div>
+
+    <script>
+        //图片上传
+        function upload() {
+            var $c = document.querySelector("#fileBtn"); //上传出发按钮
+            var $d = document.querySelector("#img"); //图片容器
+            var file = $c.files[0]; //获取file对象单张
+            var reader = new FileReader(); //创建filereader对象
+            reader.readAsDataURL(file); //转换数据
+            reader.onload = function(e) { //加载ok时触发的事件
+                console.log(file);
+                $d.setAttribute("src", e.target.result); //给图片地址,显示缩略图
+                $d.style.display = "block"; //样式显示
+            };
+        }
+
+        var pan = 0;
+
+        //姓名验证
+        document.form2.name.onkeyup = function() {
+                var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
+                if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                    document.getElementById("namemsg").innerHTML = "正确";
+                    pan = 0;
+                } else {
+                    document.getElementById("namemsg").innerHTML = "错误";
+                    pan = 1;
+                }
+            }
+            //学号验证
+        document.form2.stunum.onkeyup = function() {
+                var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
+                if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                    document.getElementById("nummsg").innerHTML = "正确";
+                    pan = 0;
+                } else {
+                    document.getElementById("nummsg").innerHTML = "错误";
+                    pan = 1;
+                }
+            }
+            //班级验证
+        document.form2.clazz.onkeyup = function() {
+                var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
+                if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                    document.getElementById("clamsg").innerHTML = "正确";
+                    pan = 0;
+                } else {
+                    document.getElementById("clamsg").innerHTML = "错误";
+                    pan = 1;
+                }
+            }
+            //手机号验证
+        document.form2.phone.onkeyup = function() {
+            var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
+            if (reg3.test(this.value) && this.value.length == 11) {
+                document.getElementById("iphone").innerHTML = "正确";
+                pan = 0;
+            } else {
+                document.getElementById("iphone").innerHTML = "错误";
+                pan = 1;
+            }
+        }
+
+
+
+        //注册按钮方法
+        function test() {
+            var str = "正确"
+                //姓名
+            if (document.getElementById("namemsg").innerHTML !== str) {
+                document.getElementById("namemsg").innerHTML = "错误";
+                document.form2.name.focus();
+                document.form2.name.value = "";
+                return false;
+            }
+            //学号
+            if (document.getElementById("nummsg").innerHTML !== str) {
+                document.getElementById("nummsg").innerHTML = "错误";
+                document.form2.stunum.focus();
+                document.form2.stunum.value = "";
+                return false;
+            }
+            //班级
+            if (document.getElementById("clamsg").innerHTML !== str) {
+                document.getElementById("clamsg").innerHTML = "错误";
+                document.form2.clazz.focus();
+                document.form2.clazz.value = "";
+                return false;
+            }
+            //手机
+            if (document.getElementById("iphone").innerHTML !== str) {
+                document.getElementById("iphone").innerHTML = "错误";
+                document.form2.phone.focus();
+                document.form2.phone.value = "";
+                return false;
+            }
+        }
+
+        var photoUrl = "";
+
+        $(".confirm").click(function() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8058/student/modify',
+                data: {
+                    name: $("#stu_name").val(),
+                    stunum: $("#xuehao").val(),
+                    birth: $("#time").val(),
+                    gender: $("#sex").val(),
+                    phone: $("#phone").val(),
+                    photo: src = "2.png",
+                    // photo: photoUrl,
+                    clazz: $("#cla").val(),
+                    dept: $("#dept").val()
+                },
+                success: function(data) {
+
+                    var dataObj = eval("(" + data + ")");
+                    alert(dataObj.msg);
+
+
+                },
+                error: function() {
+
+                    alert("登陆ID或者密码错误");
+
+                }
+            });
+        });
+
+
+
+        $(function() {
+            // var stunum = getUrlParam("stunum");
+            // alert(stunum);
+            var num = location.search.substr(1).split("=");
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8058/student/query',
+                data: {
+                    stunum: num[1]
+
+                },
+                success: function(data) {
+                    data = JSON.parse(data);
+                    var person = data.rows[0];
+                    for (var key in person) document.form2[key] && (document.form2[key].value = person[key])
+                },
+                error: function() {
+                    alert("init fail");
+                }
+
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
