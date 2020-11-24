@@ -444,70 +444,34 @@
                 document.form2.phone.value = "";
                 return false;
             }
-            $(".confirm").click(function() {
-                // if (pan == 0) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'http://localhost:8058/student/add',
-                    data: {
-                        name: $("#stu_name").val(),
-                        stunum: $("#xuehao").val(),
-                        birth: $("#time").val(),
-                        gender: $("#sex").val(),
-                        phone: $("#phone").val(),
-                        photo: src = "2.png",
-                        // photo: photoUrl,
-                        clazz: $("#cla").val(),
-                        dept: $("#dept").val()
-                    },
-                    success: function(data) {
 
-                        var dataObj = eval("(" + data + ")");
-                        alert(dataObj.msg);
 
-                    },
-                    error: function() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://192.168.0.88:8058/student/add',
+                data: {
+                    name: $("#stu_name").val(),
+                    stunum: $("#xuehao").val(),
+                    birth: $("#time").val(),
+                    gender: $("#sex").val(),
+                    phone: $("#phone").val(),
+                    photo: src = "2.png",
+                    // photo: photoUrl,
+                    clazz: $("#cla").val(),
+                    dept: $("#dept").val()
+                },
+                success: function(data) {
 
-                        alert("登陆ID或者密码错误");
-
-                    }
-                });
-                // }
-                // else {
-                //     alert("fasf");
-                // }
-
+                    var dataObj = eval("(" + data + ")");
+                    alert(dataObj.msg);
+                },
+                error: function() {
+                    alert("登陆ID或者密码错误");
+                }
             });
-
 
         }
         var photoUrl = "";
-
-
-
-        // $(".confirm").click(function() {
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: 'http://localhost:8058/student/upload',
-        //         data: {
-
-        //         },
-        //         success: function(data) {
-        //             photoUrl = data.photoUrl;
-        //             var dataObj = eval("(" + data + ")");
-        //             alert(dataObj.msg);
-        //             alert("5454554");
-        //         },
-        //         error: function() {
-
-        //             alert("登陆ID或者密码错误");
-
-        //         }
-        //     });
-
-
-        // });
     </script>
 
 </body>
