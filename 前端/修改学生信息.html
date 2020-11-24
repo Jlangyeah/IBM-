@@ -223,9 +223,9 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./modify.html">修改用户信息</a></li>
-                        <li><a href="./add_stu.html">新增学生信息</a></li>
-                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
+                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
+                        <li><a href="./查询学生信息.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
                 </div>
@@ -307,7 +307,9 @@
                 </div>
 
             </form>
-            <button class="confirm">提交</button>
+            <div class="btn-box">
+                <button class="confirm">提交</button>
+            </div>
         </div>
     </div>
 
@@ -414,7 +416,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8058/student/modify',
+                url: 'http://192.168.0.88:8058/student/modify',
                 data: {
                     name: $("#stu_name").val(),
                     stunum: $("#xuehao").val(),
@@ -450,7 +452,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8058/student/query',
+                url: 'http://192.168.0.86:8058/student/query',
                 data: {
                     stunum: num[1]
 

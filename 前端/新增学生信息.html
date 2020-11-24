@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery-3.5.1.js"></script>
-    <title>添加学生</title>
+    <title>新增学生信息</title>
 
     <style>
         body {
@@ -204,12 +204,34 @@
             float: right;
             margin-right: 200px;
         }
-        
-        .confirm {
+        /* .confirm {
             height: 40px;
             width: 50px;
             border-radius: 25px;
             margin: 0 auto;
+        } */
+        
+        按钮框 */ .btn-box {
+            display: box;
+            padding-top: 4%;
+            text-align: center;
+        }
+        /* 按钮 */
+        
+        .confirm {
+            width: 100px;
+            height: 30px;
+            margin-right: 10px;
+            border: 2px solid #1890ff;
+            border-radius: 5%;
+            background-color: white;
+        }
+        
+        .confirm:hover {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 5%;
         }
     </style>
 </head>
@@ -223,14 +245,14 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./modify.html">修改用户信息</a></li>
-                        <li><a href="./add_stu.html">新增学生信息</a></li>
-                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
+                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
+                        <li><a href="./查询学生信息.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome">/Welcome！</span>
+                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
             </div>
         </div>
         <div class="box">
@@ -326,6 +348,7 @@
             };
         }
 
+        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
         var pan = 0;
 
         //姓名验证
@@ -415,7 +438,7 @@
             // if (pan == 0) {
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8058/student/add',
+                url: 'http://192.168.0.88:8058/student/add',
                 data: {
                     name: $("#stu_name").val(),
                     stunum: $("#xuehao").val(),
@@ -435,7 +458,7 @@
                 },
                 error: function() {
 
-                    alert("登陆ID或者密码错误");
+                    alert("传输失败");
 
                 }
             });

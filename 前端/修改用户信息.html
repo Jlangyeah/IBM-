@@ -17,7 +17,7 @@
         .bg {
             position: absolute;
             width: 100%;
-            height: auto;
+            height: 100%;
             background-color: #d6e0ff;
             /* background-color: #dadaff; */
         }
@@ -145,13 +145,35 @@
             content: '*';
             color: red;
         }
-        
-        .confirm {
+        /* .confirm {
             width: 80px;
             height: 30px;
             border-radius: 29px;
             background-color: rgb(34, 34, 221);
             border: rgb(34, 34, 221);
+        } */
+        
+        .btn-box {
+            display: box;
+            padding-top: 4%;
+            text-align: center;
+        }
+        /* 按钮 */
+        
+        .confirm {
+            width: 100px;
+            height: 30px;
+            margin-right: 10px;
+            border: 2px solid #1890ff;
+            border-radius: 5%;
+            background-color: white;
+        }
+        
+        .confirm:hover {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            border-radius: 5%;
         }
     </style>
 </head>
@@ -165,14 +187,14 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./modify.html">修改用户信息</a></li>
-                        <li><a href="./add_stu.html">新增学生信息</a></li>
-                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
+                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
+                        <li><a href="./查询学生信息.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome">/Welcome,"username"</span>
+                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
             </div>
         </div>
         <div class="box">
@@ -202,10 +224,11 @@
                     <input name="pwd1" type="password">
                     <span id="pwd1msg">*</span>
                 </div>
-                <div class="m6">
-                    <input type="submit" name="sub" class="confirm" value="确认">
-                </div>
+
             </form>
+            <div class="btn-box">
+                <button class="confirm">提交</button>
+            </div>
         </div>
 
     </div>
@@ -279,29 +302,35 @@
                 document.form1.phone.value = "";
                 return false;
             }
-
-
-            $(".confirm").click(function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'http://localhost:8058/student/user/modify',
-                    data: {
-                        name: $("#name").val(),
-                        id: $("#id").val(),
-                        password: $("#passwd").val(),
-                        phone: $("#phone").val(),
-
-
-                    },
-                    success: function(data) {
-                        var dataObj = eval("(" + data + ")");
-                        alert(dataObj.msg);
-                    }
-
-                })
-
-            })
         }
+
+        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+
+
+        var value = localStorage.getItem("id");
+        $(".confirm").click(function() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://192.168.0.88:8058/student/user/modify',
+                data: {
+
+                    name: $("#name").val(),
+                    // id: $(".id").val(),
+                    id: value,
+                    password: $("#passwd").val(),
+                    phone: $("#phone").val(),
+                },
+                success: function(data) {
+                    data = JSON.parse(data);
+                    alert(data.msg);
+
+                },
+                error: function() {
+                    alert("传输错误");
+                }
+            })
+        })
     </script>
 </body>
 

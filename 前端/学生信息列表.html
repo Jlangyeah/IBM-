@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表</title>
+    <title>学生信息列表</title>
     <link rel="stylesheet" href="js/css/bootstrap.min.css">
     <link rel="stylesheet" href="js/bs-table/bootstrap-table.min.css">
     <script src="js/jquery-3.5.1.js"></script>
@@ -23,7 +23,7 @@
         .bg {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 700px;
             background-color: #d6e0ff;
             /* background-color: #dadaff; */
         }
@@ -83,7 +83,6 @@
         
         .menu:hover .list {
             display: block;
-            z-index: 1;
         }
         
         span.welcome {
@@ -267,14 +266,14 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./modify.html">修改用户信息</a></li>
-                        <li><a href="./add_stu.html">新增学生信息</a></li>
-                        <li><a href="./查询.html">查询学生信息</a></li>
+                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
+                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
+                        <li><a href="./查询学生信息.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome">/Welcome,"username"</span>
+                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
             </div>
         </div>
         <div class="box">
@@ -294,14 +293,18 @@
     <script>
         $(function() {
             $('#bsTable').bootstrapTable({
-                url: 'http://192.168.0.78:8058/student/query',
+                // url: 'http://192.168.0.88:8058/student/query',
                 pageNumber: 1, //初始化加载第一页，默认第一页
-                pageSize: 2, //每页的记录行数（*）,
+                pageSize: 10, //每页的记录行数（*）,
                 pagination: true,
                 search: true,
                 columns: [{
                     field: 'id',
-                    title: '序号'
+                    title: '序号',
+                    formatter: function(value, row, index) {
+                        //html = "<img src='./modify.png' alt='modify' onclick='change(" + row.stunum + ")'>" + "<img src='./delete.png' alt='delete' onclick='popBox(" + row.stunum + ")'>"  
+                        return index + 1;
+                    }
                 }, {
                     field: "stunum",
                     title: "number"
@@ -331,11 +334,34 @@
                         return html                 
                     }                
                 }]            
-            })        
+            })   
+            initData();      
         });
 
+        function initData() {
+            $.ajax({
+                type: 'post',
+                url: 'http://192.168.0.88:8058/student/query',
+                //contentType: "application/json",
+                dataType: "json",
+                // data: options,
+                success: function(data) {
+                    console.log("response..", data)
+                    var tableData = {
+                        total: data.length,
+                        rows: data
+                    };
+                    $('#bsTable').bootstrapTable("load", data.rows)
 
-                
+                },
+                error: function(err) {
+
+                    alert("error")
+                }
+            })
+        };        
+        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+
         function  queryParams(params)  {     
             var  pars  =   {    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                          
@@ -360,7 +386,7 @@
 
             $.ajax({                
                 type: 'POST',
-                url: 'http://localhost:8058/student/delete',
+                url: 'http://192.168.0.88:8058/student/delete',
                 data:  {                    
                     stunum: stunum
 
@@ -373,6 +399,7 @@
                         $('#bsTable').bootstrapTable('refresh'); 
                         alert(dataObj.msg);
                         $("#popBox").hide();
+                        window.location.href = "./学生信息列表.html";
                     } 
                     else {
                         alert(dataObj.msg);
@@ -400,7 +427,7 @@
 
         function change(stunum) {
 
-            window.location.href = "./mod_stu.html?stunum=" + stunum;
+            window.location.href = "./修改学生信息.html?stunum=" + stunum;
 
 
 
