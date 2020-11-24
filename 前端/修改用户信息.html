@@ -199,7 +199,7 @@
         </div>
         <div class="box">
             <p class="box-title">修改用户信息</p>
-            <form action="" name="form1" onsubmit="return test()">
+            <form action="" name="form1">
                 <div class="m1">
                     <label for="">登陆ID：</label>
                     <input class="id" name="id" type="text" disabled="true">
@@ -227,7 +227,7 @@
 
             </form>
             <div class="btn-box">
-                <button class="confirm">提交</button>
+                <button class="confirm" onclick="test()">提交</button>
             </div>
         </div>
 
@@ -273,7 +273,10 @@
             }
         }
 
+        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
 
+
+        var value = localStorage.getItem("id");
 
         //注册按钮方法
         function test() {
@@ -302,35 +305,30 @@
                 document.form1.phone.value = "";
                 return false;
             }
-        }
+            $(".confirm").click(function() {
 
-        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://192.168.0.88:8058/student/user/modify',
+                    data: {
 
+                        name: $("#name").val(),
+                        // id: $(".id").val(),
+                        id: value,
+                        password: $("#passwd").val(),
+                        phone: $("#phone").val(),
+                    },
+                    success: function(data) {
+                        data = JSON.parse(data);
+                        alert(data.msg);
 
-        var value = localStorage.getItem("id");
-        $(".confirm").click(function() {
-
-            $.ajax({
-                type: 'POST',
-                url: 'http://192.168.0.88:8058/student/user/modify',
-                data: {
-
-                    name: $("#name").val(),
-                    // id: $(".id").val(),
-                    id: value,
-                    password: $("#passwd").val(),
-                    phone: $("#phone").val(),
-                },
-                success: function(data) {
-                    data = JSON.parse(data);
-                    alert(data.msg);
-
-                },
-                error: function() {
-                    alert("传输错误");
-                }
+                    },
+                    error: function() {
+                        alert("传输错误");
+                    }
+                })
             })
-        })
+        }
     </script>
 </body>
 
