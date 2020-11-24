@@ -10,9 +10,9 @@
     <style>
         body {
             margin: 0;
-            width: 1350px;
-            height: auto;
-            min-width: 1350px;
+            /* width: 1350px; */
+            height: 100%;
+            /* min-width: 1350px; */
             overflow: scroll;
         }
         /* 背景 */
@@ -20,10 +20,12 @@
         .bg {
             position: absolute;
             width: 100%;
-            width: 1350px;
+            /* width: 1350px; */
             height: auto;
-            min-width: 1350px;
-            background-color: #d6e0ff;
+            /* min-width: 1350px; */
+            background-image: url(./3.png);
+            background-size: cover;
+            /* background-color: #d6e0ff; */
             /* background-color: #dadaff; */
         }
         /* 表头 */
@@ -113,10 +115,11 @@
         
         .box {
             margin-top: 10px;
-            width: 100%;
-            height: 40%;
+            margin-left: 10%;
+            width: 80%;
+            height: 800px;
             display: box;
-            background-color: #d6e0ff;
+            /* background-color: #d6e0ff; */
             /* background-color: #dadaff; */
         }
         
@@ -130,27 +133,61 @@
             /* border-bottom: 1px dashed gray; */
         }
         
-        #input1 {
-            margin-top: 5px;
-            height: 150px;
+        .box form {
+            width: 100%;
+            height: 70%;
+            /* padding-left: 100px; */
+            /* text-align: right; */
+            /* margin-left: 15px; */
         }
         
-        #input2,
-        #input3 {
-            margin-top: 30px;
+        .add-box {
+            /* position: relative; */
+            margin-top: 10px;
+            width: 80%;
+            height: 50%;
+            display: block;
+            /* text-align: left; */
+            padding-left: 80px;
+            /* border: 1px solid black; */
         }
         
-        #div1 {
-            margin-left: 200px;
+        .box label {
+            font-size: 16px;
+            margin-right: 10px;
         }
         
-        #div3 {
+        .text-box {
+            /* font-size: 14px; */
+            width: 140px;
+            height: 25px;
+            border: 1px solid rgb(224, 219, 219);
+            border-radius: 5%;
+        }
+        
+        .add-box-1 {
+            width: 250px;
+            text-align: right;
+            float: left;
+            /* border: 1px solid red; */
+        }
+        
+        .add-box-2 {
+            width: 250px;
+            text-align: right;
             float: right;
-            margin-right: 200px;
+            /* border: 1px solid blue; */
         }
         
-        #div2 {
-            margin-left: 200px;
+        .photo-box {
+            /* position: relative; */
+            margin-top: 10px;
+            width: 80%;
+            height: 50%;
+            display: block;
+            /* text-align: left; */
+            padding-left: 90px;
+            /* border: 1px solid green; */
         }
         
         #fileBtn {
@@ -170,24 +207,19 @@
         .fileBtn {
             width: 100px;
             height: 100px;
+            position: relative;
             border: 2px dashed lightskyblue;
             text-align: center;
-            position: relative;
-            left: 50px;
-            top: 50px;
         }
         
         .fileBtn p {
-            line-height: 60px;
+            line-height: 70px;
+            /* border: 1px solid black; */
         }
         
         #img {
             width: 100px;
             height: 100px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
             display: none;
         }
         
@@ -200,18 +232,15 @@
             margin-top: 80px;
         }
         
-        #div5 {
-            float: right;
-            margin-right: 200px;
-        }
-        /* .confirm {
+        .confirm {
             height: 40px;
             width: 50px;
             border-radius: 25px;
             margin: 0 auto;
-        } */
+        }
+        /* 按钮框 */
         
-        按钮框 */ .btn-box {
+        .btn-box {
             display: box;
             padding-top: 4%;
             text-align: center;
@@ -221,7 +250,6 @@
         .confirm {
             width: 100px;
             height: 30px;
-            margin-right: 10px;
             border: 2px solid #1890ff;
             border-radius: 5%;
             background-color: white;
@@ -245,9 +273,9 @@
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
                         <li><a href="./学生信息列表.html">学生信息列表</a></li>
-                        <li><a href="./修改用户信息.html">修改用户信息</a></li>
-                        <li><a href="./新增学生信息.html">新增学生信息</a></li>
-                        <li><a href="./查询学生信息.html">查询学生信息</a></li>
+                        <li><a href="./modify.html">修改用户信息</a></li>
+                        <li><a href="./add_stu.html">新增学生信息</a></li>
+                        <li><a href="./查询.html">查询学生信息</a></li>
                         <li><a href="./学生信息统计.html">学生信息统计</a></li>
                     </ul>
                 </div>
@@ -257,70 +285,56 @@
         </div>
         <div class="box">
             <p class="box-title">添加学生</p>
-            <form action="" name="form2" onsubmit="return test()">
-                <div id="input1">
-                    </p>基本信息</p>
-                    <hr>
-                    <div style="display: inline-block;" id="div1">
-                        <p>学生姓名</p>
-                        <input type="text" name="name" id="stu_name" placeholder="请输入姓名"><br>
-                        <span id="namemsg"></span>
-                    </div>
-                    <div style="display: inline-block;" id="div2">
-                        <p>学号</p>
-                        <input type="text" name="stunum" id="xuehao" placeholder="请输入学号" maxlength="30"><br>
+            <form action="" name="form2">
+                <p>基本信息</p>
+                <hr>
+                <div class="add-box">
+                    <div class="add-box-1">
+                        <label for=""><span>学号:</span>
+                            <input type="text" class="text-box" name="stunum" id="xuehao" placeholder="请输入学号"
+                                maxlength="30"></label>
                         <span id="nummsg"></span>
+                        <br><br><br>
+                        <label for=""><span>姓名:</span>
+                            <input type="text" class="text-box" name="name" id="stu_name" placeholder="请输入姓名"></label>
+                        <span id="namemsg"></span>
+                        <br><br><br>
+                        <label for=""><span>性别:</span>
+                            <select name="gender" class="text-box" id="sex">
+                                <option value=""></option>
+                                <option value="男">男</option>
+                                </option>
+                                <option value="女">女</option>
+                            </select></label>
                     </div>
-                    <div style="display: inline-block;" id="div3">
-                        <p>出生年月日</p>
-                        <input type="date" name="birth" id="time" style="width: 177px;">
-                    </div>
-                </div>
-
-
-                <div id="input2">
-                    <div style="display: inline-block;" id="div1">
-                        <p>性别</p>
-                        <select name="gender" id="sex" style="width: 177px;">
-                            <option value="男">男</option>
-                            </option>
-                            <option value="女">女</option>
-                        </select>
-                    </div>
-                    <div style="display: inline-block;" id="div2">
-                        <p>手机号码</p>
-                        <input type="text" name="phone" id="phone" placeholder="请输入手机号"><br>
+                    <div class="add-box-2">
+                        <label for=""><span>出生年月日:</span>
+                            <input type="date" class="text-box" name="birth" id="time"></label>
+                        <br><br><br>
+                        <label for=""><span>电话:</span>
+                            <input type="text" class="text-box" name="phone" id="phone" placeholder="请输入手机号"></label>
                         <span id="iphone"></span>
-                    </div>
-                    <div style="display: inline-block;" id="div5">
-                        <p>班级</p>
-                        <input type="text" name="clazz" id="cla" placeholder="请输入班级"><br>
+                        <br><br><br>
+                        <label for=""><span>班级:</span>
+                            <input type="text" class="text-box" name="clazz" id="cla" placeholder="请输入班级"></label>
                         <span id="clamsg"></span>
+                        <br><br><br>
+                        <label for=""><span>系部:</span>
+                            <select name="dept" class="text-box" id="dept">
+                                <option value=""></option>
+                                <option value="管理系">管理系</option>
+                                <option value="计算机系">计算机系</option>
+                                <option value="土木系">土木系</option>
+                            </select>
+                        </label>
                     </div>
+                    <br>
                 </div>
-
-                <div id="input3">
-                    <div style="display: inline-block;margin-left: 585px;" id="div4">
-                        <p>系部</p>
-                        <select name="dept" id="dept" style="width: 177px;">
-                            <option value="信息工程">信息工程</option>
-                            <option value="管理">管理</option>
-                            <option value="计算机">计算机</option>
-                            <option value="土木">土木</option>
-                        </select>
-                    </div>
-                    <div style="display: inline-block;" id="div3">
-                        <p>信息录入时间</p>
-                        <input type="text" name="" id="" disabled="true" style="background-color: gray;">
-                    </div>
-
-                </div>
-
-
-                <div id="input4">
-                    </p>学生照片</p>
-                    <hr>
+                <p>学生照片</p>
+                <hr>
+                <div class="photo-box">
                     <div class="fileBtn">
+                        <!-- <img src="./2.png" alt="头像" class="img1"> -->
                         <p>点击添加图片</p>
                         <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" multiple="multiple" />
                         <!--单张图片容器-->
@@ -329,7 +343,9 @@
                 </div>
 
             </form>
-            <button class="confirm">提交</button>
+            <div class="btn-box">
+                <button class="confirm" onclick="test()">提交</button>
+            </div>
         </div>
     </div>
 
@@ -348,9 +364,8 @@
             };
         }
 
+        // var pan = 0;
         $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
-        var pan = 0;
-
         //姓名验证
         document.form2.name.onkeyup = function() {
                 var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
@@ -429,45 +444,46 @@
                 document.form2.phone.value = "";
                 return false;
             }
+            $(".confirm").click(function() {
+                // if (pan == 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:8058/student/add',
+                    data: {
+                        name: $("#stu_name").val(),
+                        stunum: $("#xuehao").val(),
+                        birth: $("#time").val(),
+                        gender: $("#sex").val(),
+                        phone: $("#phone").val(),
+                        photo: src = "2.png",
+                        // photo: photoUrl,
+                        clazz: $("#cla").val(),
+                        dept: $("#dept").val()
+                    },
+                    success: function(data) {
+
+                        var dataObj = eval("(" + data + ")");
+                        alert(dataObj.msg);
+
+                    },
+                    error: function() {
+
+                        alert("登陆ID或者密码错误");
+
+                    }
+                });
+                // }
+                // else {
+                //     alert("fasf");
+                // }
+
+            });
 
 
         }
         var photoUrl = "";
 
-        $(".confirm").click(function() {
-            // if (pan == 0) {
-            $.ajax({
-                type: 'POST',
-                url: 'http://192.168.0.88:8058/student/add',
-                data: {
-                    name: $("#stu_name").val(),
-                    stunum: $("#xuehao").val(),
-                    birth: $("#time").val(),
-                    gender: $("#sex").val(),
-                    phone: $("#phone").val(),
-                    photo: src = "2.png",
-                    // photo: photoUrl,
-                    clazz: $("#cla").val(),
-                    dept: $("#dept").val()
-                },
-                success: function(data) {
 
-                    var dataObj = eval("(" + data + ")");
-                    alert(dataObj.msg);
-
-                },
-                error: function() {
-
-                    alert("传输失败");
-
-                }
-            });
-            // }
-            // else {
-            //     alert("fasf");
-            // }
-
-        });
 
         // $(".confirm").click(function() {
 
