@@ -293,35 +293,35 @@
         document.form1.name.onkeyup = function() {
                 var reg = /[\u4E00-\u9FA5]/;
                 if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("namemsg").innerHTML = "输入正确";
+                    document.getElementById("namemsg").innerText = "输入正确";
                 } else {
-                    document.getElementById("namemsg").innerHTML = "输入错误";
+                    document.getElementById("namemsg").innerText = "输入错误";
                 }
             }
             //手机号验证
         document.form1.phone.onkeyup = function() {
                 var reg2 = /^(13|14|15|17|18)[0-9]{9}/;
                 if (reg2.test(this.value) && this.value.length == 11) {
-                    document.getElementById("iphone").innerHTML = "输入正确";
+                    document.getElementById("iphone").innerText = "输入正确";
                 } else {
-                    document.getElementById("iphone").innerHTML = "输入错误";
+                    document.getElementById("iphone").innerText = "输入错误";
                 }
             }
             //密码验证
         document.form1.password.onkeyup = function() {
                 var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
                 if (reg1.test(this.value) && this.value.length >= 8 && this.value.length <= 30) {
-                    document.getElementById("pwdmsg").innerHTML = "输入正确";
+                    document.getElementById("pwdmsg").innerText = "输入正确";
                 } else {
-                    document.getElementById("pwdmsg").innerHTML = "输入错误";
+                    document.getElementById("pwdmsg").innerText = "输入错误";
                 }
             }
             //确认密码
         document.form1.pwd1.onkeyup = function() {
             if (this.value == document.form1.password.value && this.value != "") {
-                document.getElementById("pwd1msg").innerHTML = "输入正确";
+                document.getElementById("pwd1msg").innerText = "输入正确";
             } else {
-                document.getElementById("pwd1msg").innerHTML = "密码不符";
+                document.getElementById("pwd1msg").innerText = "密码不符";
             }
         }
 
@@ -334,26 +334,26 @@
         //注册按钮方法
         function test() {
             var str = "输入正确"
-            if (document.getElementById("namemsg").innerHTML !== str) {
-                document.getElementById("namemsg").innerHTML = "输入错误";
+            if (document.getElementById("namemsg").innerText !== str) {
+                document.getElementById("namemsg").innerText = "输入错误";
                 document.form1.name.focus();
                 document.form1.name.value = "";
                 return false;
             }
-            if (document.getElementById("iphone").innerHTML !== str) {
-                document.getElementById("iphone").innerHTML = "输入错误";
+            if (document.getElementById("iphone").innerText !== str) {
+                document.getElementById("iphone").innerText = "输入错误";
                 document.form1.phone.focus();
                 document.form1.phone.value = "";
                 return false;
             }
-            if (document.getElementById("pwdmsg").innerHTML !== str) {
-                document.getElementById("pwdmsg").innerHTML = "输入错误";
+            if (document.getElementById("pwdmsg").innerText !== str) {
+                document.getElementById("pwdmsg").innerText = "输入错误";
                 document.form1.password.focus();
                 document.form1.password.value = "";
                 return false;
             }
-            if (document.getElementById("pwd1msg").innerHTML !== str) {
-                document.getElementById("pwd1msg").innerHTML = "输入错误";
+            if (document.getElementById("pwd1msg").innerText !== str) {
+                document.getElementById("pwd1msg").innerText = "输入错误";
                 document.form1.pwd1.focus();
                 document.form1.pwd1.value = "";
                 return false;
