@@ -10,9 +10,8 @@
     <style>
         body {
             margin: 0;
-            /* width: 1350px; */
+            width: 100%;
             height: 100%;
-            /* min-width: 1350px; */
             overflow: scroll;
         }
         /* 背景 */
@@ -20,13 +19,9 @@
         .bg {
             position: absolute;
             width: 100%;
-            /* width: 1350px; */
             height: auto;
-            /* min-width: 1350px; */
             background-image: url(./3.png);
             background-size: cover;
-            /* background-color: #d6e0ff; */
-            /* background-color: #dadaff; */
         }
         /* 表头 */
         
@@ -73,6 +68,10 @@
             color: gray;
         }
         
+        .list a:hover {
+            color: #1890ff;
+        }
+        
         .menu-btn {
             width: 200px;
             height: 40px;
@@ -98,7 +97,7 @@
             width: 50px;
             height: 20px;
             /* margin-bottom: 5px; */
-            margin-left: 20px;
+            margin-left: 10px;
             border: 2px solid #1890ff;
             border-radius: 10%;
             background-color: white;
@@ -117,10 +116,9 @@
             margin-top: 10px;
             margin-left: 10%;
             width: 80%;
-            height: 800px;
+            height: 700px;
             display: box;
             /* background-color: #d6e0ff; */
-            /* background-color: #dadaff; */
         }
         
         .box-title {
@@ -133,36 +131,26 @@
             /* border-bottom: 1px dashed gray; */
         }
         
+        .p1 {
+            margin-left: 30px;
+        }
+        /* 表格框 */
+        
         .box form {
             width: 100%;
             height: 70%;
-            /* padding-left: 100px; */
-            /* text-align: right; */
-            /* margin-left: 15px; */
         }
+        /* 填写栏框 */
         
         .add-box {
             /* position: relative; */
-            margin-top: 10px;
-            width: 80%;
+            margin-top: 25px;
+            width: 75%;
             height: 50%;
             display: block;
             /* text-align: left; */
-            padding-left: 80px;
+            padding-left: 110px;
             /* border: 1px solid black; */
-        }
-        
-        .box label {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        
-        .text-box {
-            /* font-size: 14px; */
-            width: 140px;
-            height: 25px;
-            border: 1px solid rgb(224, 219, 219);
-            border-radius: 5%;
         }
         
         .add-box-1 {
@@ -179,14 +167,37 @@
             /* border: 1px solid blue; */
         }
         
+        .box label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        /* 输入框 */
+        
+        .text-box {
+            /* font-size: 14px; */
+            width: 140px;
+            height: 25px;
+            border: 1px solid rgb(224, 219, 219);
+            border-radius: 5%;
+        }
+        /* 选择框 */
+        
+        .select-box {
+            width: 147px;
+            height: 27px;
+            border: 1px solid rgb(224, 219, 219);
+            border-radius: 5%;
+        }
+        /* 图片上传栏框 */
+        
         .photo-box {
             /* position: relative; */
-            margin-top: 10px;
+            margin-top: 15px;
             width: 80%;
             height: 50%;
             display: block;
             /* text-align: left; */
-            padding-left: 90px;
+            padding-left: 70px;
             /* border: 1px solid green; */
         }
         
@@ -207,19 +218,23 @@
         .fileBtn {
             width: 100px;
             height: 100px;
-            position: relative;
             border: 2px dashed lightskyblue;
             text-align: center;
+            position: relative;
+            left: 100px;
         }
         
         .fileBtn p {
             line-height: 70px;
-            /* border: 1px solid black; */
         }
         
         #img {
             width: 100px;
             height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
             display: none;
         }
         
@@ -231,25 +246,18 @@
         .img-box {
             margin-top: 80px;
         }
-        
-        .confirm {
-            height: 40px;
-            width: 50px;
-            border-radius: 25px;
-            margin: 0 auto;
-        }
         /* 按钮框 */
         
         .btn-box {
+            margin-top: 20px;
             display: box;
-            padding-top: 4%;
             text-align: center;
         }
         /* 按钮 */
         
         .confirm {
-            width: 100px;
-            height: 30px;
+            width: 145px;
+            height: 35px;
             border: 2px solid #1890ff;
             border-radius: 5%;
             background-color: white;
@@ -280,13 +288,13 @@
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
+                <span class="welcome" id="welcomeTxt"></span>
             </div>
         </div>
         <div class="box">
-            <p class="box-title">添加学生</p>
+            <p class="box-title">新增学生信息</p>
             <form action="" name="form2">
-                <p>基本信息</p>
+                <p class="p1">基本信息</p>
                 <hr>
                 <div class="add-box">
                     <div class="add-box-1">
@@ -300,7 +308,7 @@
                         <span id="namemsg"></span>
                         <br><br><br>
                         <label for=""><span>性别:</span>
-                            <select name="gender" class="text-box" id="sex">
+                            <select name="gender" class="select-box" id="sex">
                                 <option value=""></option>
                                 <option value="男">男</option>
                                 </option>
@@ -320,7 +328,7 @@
                         <span id="clamsg"></span>
                         <br><br><br>
                         <label for=""><span>系部:</span>
-                            <select name="dept" class="text-box" id="dept">
+                            <select name="dept" class="select-box" id="dept">
                                 <option value=""></option>
                                 <option value="管理系">管理系</option>
                                 <option value="计算机系">计算机系</option>
@@ -330,12 +338,12 @@
                     </div>
                     <br>
                 </div>
-                <p>学生照片</p>
+                <p class="p1">学生照片</p>
                 <hr>
                 <div class="photo-box">
                     <div class="fileBtn">
                         <!-- <img src="./2.png" alt="头像" class="img1"> -->
-                        <p>点击添加图片</p>
+                        <p class="p2">点击添加图片</p>
                         <input id="fileBtn" type="file" onchange="upload();" accept="image/*" capture="camera" multiple="multiple" />
                         <!--单张图片容器-->
                         <img src="" alt="" id="img">
@@ -350,10 +358,13 @@
     </div>
 
     <script>
+        //输入学生学号
+        $("#welcomeTxt").text("Welcome, " + localStorage.getItem("id"));
         //图片上传
         function upload() {
             var $c = document.querySelector("#fileBtn"); //上传出发按钮
             var $d = document.querySelector("#img"); //图片容器
+            var $v = document.querySelector("#.p2"); //文字
             var file = $c.files[0]; //获取file对象单张
             var reader = new FileReader(); //创建filereader对象
             reader.readAsDataURL(file); //转换数据
@@ -361,82 +372,80 @@
                 console.log(file);
                 $d.setAttribute("src", e.target.result); //给图片地址,显示缩略图
                 $d.style.display = "block"; //样式显示
+                $v.style.display = "none"; //文字消失
             };
         }
 
-        // var pan = 0;
-        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+        var pan = 0;
+        //学号验证
+        document.form2.stunum.onkeyup = function() {
+            var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
+            if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                document.getElementById("nummsg").innerHTML = "正确";
+                pan = 0;
+            } else {
+                document.getElementById("nummsg").innerHTML = "错误";
+                pan = 1;
+            }
+        }
+
         //姓名验证
         document.form2.name.onkeyup = function() {
-                var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
-                if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("namemsg").innerHTML = "正确";
-                    pan = 0;
-                } else {
-                    document.getElementById("namemsg").innerHTML = "错误";
-                    pan = 1;
-                }
+            var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
+            if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                document.getElementById("namemsg").innerHTML = "正确";
+                pan = 0;
+            } else {
+                document.getElementById("namemsg").innerHTML = "错误";
+                pan = 1;
             }
-            //学号验证
-        document.form2.stunum.onkeyup = function() {
-                var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
-                if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("nummsg").innerHTML = "正确";
+        }
+
+
+        //手机号验证
+        document.form2.phone.onkeyup = function() {
+                var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
+                if (reg3.test(this.value) && this.value.length == 11) {
+                    document.getElementById("iphone").innerHTML = "正确";
                     pan = 0;
                 } else {
-                    document.getElementById("nummsg").innerHTML = "错误";
+                    document.getElementById("iphone").innerHTML = "错误";
                     pan = 1;
                 }
             }
             //班级验证
         document.form2.clazz.onkeyup = function() {
-                var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
-                if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                    document.getElementById("clamsg").innerHTML = "正确";
-                    pan = 0;
-                } else {
-                    document.getElementById("clamsg").innerHTML = "错误";
-                    pan = 1;
-                }
-            }
-            //手机号验证
-        document.form2.phone.onkeyup = function() {
-            var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
-            if (reg3.test(this.value) && this.value.length == 11) {
-                document.getElementById("iphone").innerHTML = "正确";
+            var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
+            if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                document.getElementById("clamsg").innerHTML = "正确";
                 pan = 0;
             } else {
-                document.getElementById("iphone").innerHTML = "错误";
+                document.getElementById("clamsg").innerHTML = "错误";
                 pan = 1;
             }
         }
 
 
 
+
         //注册按钮方法
         function test() {
             var str = "正确"
-                //姓名
-            if (document.getElementById("namemsg").innerHTML !== str) {
-                document.getElementById("namemsg").innerHTML = "错误";
-                document.form2.name.focus();
-                document.form2.name.value = "";
-                return false;
-            }
-            //学号
+                //学号
             if (document.getElementById("nummsg").innerHTML !== str) {
                 document.getElementById("nummsg").innerHTML = "错误";
                 document.form2.stunum.focus();
                 document.form2.stunum.value = "";
                 return false;
             }
-            //班级
-            if (document.getElementById("clamsg").innerHTML !== str) {
-                document.getElementById("clamsg").innerHTML = "错误";
-                document.form2.clazz.focus();
-                document.form2.clazz.value = "";
+            //姓名
+            if (document.getElementById("namemsg").innerHTML !== str) {
+                document.getElementById("namemsg").innerHTML = "错误";
+                document.form2.name.focus();
+                document.form2.name.value = "";
                 return false;
             }
+
             //手机
             if (document.getElementById("iphone").innerHTML !== str) {
                 document.getElementById("iphone").innerHTML = "错误";
@@ -445,6 +454,13 @@
                 return false;
             }
 
+            //班级
+            if (document.getElementById("clamsg").innerHTML !== str) {
+                document.getElementById("clamsg").innerHTML = "错误";
+                document.form2.clazz.focus();
+                document.form2.clazz.value = "";
+                return false;
+            }
 
             $.ajax({
                 type: 'POST',
@@ -464,15 +480,45 @@
 
                     var dataObj = eval("(" + data + ")");
                     alert(dataObj.msg);
-                    window.location.href = "./学生信息列表.html";
+                    if (dataObj.code == 1)
+                        window.location.href = "./学生信息列表.html";
+
                 },
                 error: function() {
+
                     alert("登陆ID或者密码错误");
+
                 }
             });
 
+
         }
-        var photoUrl = "";
+
+        // var photoUrl = "";
+
+        // $(".confirm").click(function() {
+
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: 'http://localhost:8058/student/upload',
+        //         data: {
+
+        //         },
+        //         success: function(data) {
+        //             photoUrl = data.photoUrl;
+        //             var dataObj = eval("(" + data + ")");
+        //             alert(dataObj.msg);
+        //             alert("5454554");
+        //         },
+        //         error: function() {
+
+        //             alert("登陆ID或者密码错误");
+
+        //         }
+        //     });
+
+
+        // });
     </script>
 
 </body>

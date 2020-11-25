@@ -16,17 +16,19 @@
         body {
             margin: 0;
             width: 100%;
-            height: auto;
-            /* overflow: scroll; */
+            height: 100%;
         }
         /* 背景 */
         
         .bg {
-            position: fixed;
+            position: absolute;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: white;
+            background: url(./3.png);
+            overflow: scroll;
+            background-size: cover;
+            background-attachment: fixed;
+            /* background-color: #dadaff; */
         }
         /* 表头 */
         
@@ -35,6 +37,7 @@
         }
         
         .title {
+            margin: 20px;
             text-align: center;
             font-size: 30px;
             font-weight: bold;
@@ -64,13 +67,22 @@
             padding: 12px 16px;
         }
         
+        .li-1 {
+            margin-top: 40px;
+        }
+        
         li {
             margin-top: 20px;
         }
         
         .list a {
+            font-size: 16px;
             text-decoration: none;
             color: gray;
+        }
+        
+        .list a:hover {
+            color: #1890ff;
         }
         
         .menu-btn {
@@ -87,6 +99,7 @@
         }
         
         span.welcome {
+            font-size: 16px;
             float: right;
             color: rgb(185, 26, 185);
         }
@@ -98,7 +111,7 @@
             width: 50px;
             height: 20px;
             /* margin-bottom: 5px; */
-            margin-left: 20px;
+            margin-left: 10px;
             border: 2px solid #1890ff;
             border-radius: 10%;
             background-color: white;
@@ -132,6 +145,23 @@
             font-weight: bold;
             color: rgb(61, 60, 60);
             border-bottom: 1px dashed gray;
+        }
+        
+        .table {
+            width: 100%;
+            height: auto;
+            border-collapse: collapse;
+            border-color: rgb(224, 219, 219);
+        }
+        
+        .table th {
+            background-color: #94b9cd;
+            color: white;
+            width: 100px;
+        }
+        
+        .table td {
+            background-color: white;
         }
         /* 填写框 */
         
@@ -193,7 +223,7 @@
                 <div class="menu">
                     <button type="button" class="menu-btn">目录</button>
                     <ul class="list">
-                        <li><a href="./学生信息列表.html">学生信息列表</a></li>
+                        <li class="li-1"><a href="./学生信息列表.html">学生信息列表</a></li>
                         <li><a href="./修改用户信息.html">修改用户信息</a></li>
                         <li><a href="./新增学生信息.html">新增学生信息</a></li>
                         <li><a href="./查询学生信息.html">查询学生信息</a></li>
@@ -201,7 +231,7 @@
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
+                <span class="welcome" id="welcomeTxt"></span>
             </div>
         </div>
         <div class="box">
@@ -236,7 +266,6 @@
                 <table id="bsTable"></table>
             </div>
         </div>
-
     </div>
 
     </div>
@@ -277,7 +306,7 @@
 
 
         };
-        $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+        $("#welcomeTxt").text("Welcome, " + localStorage.getItem("id"));
         $(function() {
             var options = {
                 name: $("#name").val(),
@@ -294,17 +323,17 @@
                 pageNumber: 1, //初始化加载第一页，默认第一页
                 pageSize: 10, //每页的记录行数（*）,
                 pagination: true,
-                search: true,
+                search: false,
                 columns: [{
                     field: 'id',
                     title: '序号',
                     formatter: function(value, row, index) {
-                        //html = "<img src='./modify.png' alt='modify' onclick='change(" + row.stunum + ")'>" + "<img src='./delete.png' alt='delete' onclick='popBox(" + row.stunum + ")'>"  
+                        //html = "<img src='./modify.png' alt='modify' onclick='change(" + row.stunum + ")'>" + "<img src='./delete.png' alt='delete' onclick='popBox(" + row.stunum + ")'>"  
                         return index + 1;
                     }
                 }, {
                     field: "stunum",
-                    title: "number"
+                    title: "学号"
                 }, {
                     field: 'name',
                     title: '学生姓名'
@@ -322,38 +351,38 @@
                     title: '班级'
                 }, {
                     field: 'dept',
-                    title: '系部'                     
-                }]            
-            })     
-            selectBox();   
+                    title: '系部'
+                }]
+            })
+            selectBox();
         });
 
 
-                
-        function  queryParams(params)  {     
-            var  pars  =   {    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                         
-                limit:  params.limit,
-                    //页面大小
-                         offset:  params.offset,
-                   //页码
-                         sort: params.sort,
-                         order: params.order,
-                         search: this.search,
-                         name:  $("input[name='user_name']").val(),
-                         telephone:  $("#telephone").val(),
-                         password:  $("#password").val(),
-                         length: 8     
-            };     
-            console.log(pars);     
-            return  pars; 
+
+        function queryParams(params) {
+            var pars = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+
+                limit: params.limit,
+                //页面大小
+                offset: params.offset,
+                //页码
+                sort: params.sort,
+                order: params.order,
+                search: this.search,
+                name: $("input[name='user_name']").val(),
+                telephone: $("#telephone").val(),
+                password: $("#password").val(),
+                length: 8
+            };
+            console.log(pars);
+            return pars;
         };
         // 清空功能
         function deleteBox() {
             document.getElementById("name").value = "";
             document.getElementById("sex").value = "";
             document.getElementById("id").value = "";
-            document.getElementById("marjor").value = "";
+            document.getElementById("major").value = "";
             document.getElementById("class").value = "";
         }
     </script>

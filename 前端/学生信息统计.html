@@ -12,40 +12,44 @@
             width: 100%;
             height: 100%;
         }
+
         /* 背景 */
-        
+
         .bg {
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: #d6e0ff;
+            background-image: url(./3.png);
+            background-size: cover;
             /* background-color: #dadaff; */
         }
+
         /* 表头 */
-        
+
         .header {
             margin: 0;
         }
-        
+
         .title {
             text-align: center;
             font-size: 30px;
             font-weight: bold;
         }
-        
+
         .menu-box {
             height: 30px;
             margin-left: 100px;
             margin-top: 5px;
             margin-right: 100px;
         }
+
         /* 菜单栏 */
-        
+
         .menu {
             position: relative;
             display: inline-block;
         }
-        
+
         .list {
             display: none;
             /* position: relative; */
@@ -56,16 +60,20 @@
             list-style: none;
             padding: 12px 16px;
         }
-        
+
         li {
             margin-top: 20px;
         }
-        
+
         .list a {
             text-decoration: none;
             color: gray;
         }
-        
+
+        .list a:hover {
+            color: #1890ff;
+        }
+
         .menu-btn {
             width: 200px;
             height: 40px;
@@ -74,48 +82,49 @@
             border-radius: 5%;
             float: left;
         }
-        
+
         .menu:hover .list {
             display: block;
         }
-        
+
         span.welcome {
             float: right;
             color: rgb(185, 26, 185);
         }
+
         /* 退出按钮 */
-        
+
         .exit-btn {
             float: right;
             padding-top: 0;
             width: 50px;
             height: 20px;
             /* margin-bottom: 5px; */
-            margin-left: 20px;
+            margin-left: 10px;
             border: 2px solid #1890ff;
             border-radius: 10%;
             background-color: white;
         }
-        
+
         .exit-btn:hover {
             background-color: #1890ff;
             color: white;
             border: none;
             border-radius: 10%;
         }
+
         /* 内容 */
         /* 整体 */
-        
+
         .box {
             margin-top: 10px;
             margin-left: 10%;
             width: 80%;
-            height: 40%;
+            height: 700px;
             display: box;
-            background-color: #d6e0ff;
-            /* background-color: #dadaff; */
+            /* background-color: #d6e0ff; */
         }
-        
+
         .box-title {
             text-align: center;
             /* padding-top: 5px; */
@@ -125,7 +134,7 @@
             color: rgb(61, 60, 60);
             border-bottom: 1px dashed gray;
         }
-        
+
         table {
             background-color: white;
             width: 100%;
@@ -133,19 +142,21 @@
             border-collapse: collapse;
             text-align: center;
         }
-        
+
+
         table tr {
-            margin: 0%;
+            margin: 0;
         }
-        
+
         table tr td {
             border: 1px solid rgb(199, 215, 245);
+            /* width: 100px; */
         }
-        
+
         .one {
             background-color: rgb(174, 199, 209);
         }
-        
+
         .three {
             margin-top: 20px;
             margin-left: 30px;
@@ -154,7 +165,7 @@
     <script>
         //获得参数的方法
         var request = {
-            QueryString: function(val) {
+            QueryString: function (val) {
                 var uri = window.location.search;
                 var re = new RegExp("" + val + "=([^&?]*)", "ig");
                 return ((uri.match(re)) ? (uri.match(re)[0].substr(val.length + 1)) : null);
@@ -179,7 +190,7 @@
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
+                <span class="welcome" id="welcomeTxt"></span>
             </div>
         </div>
         <div class="box">
@@ -217,34 +228,34 @@
             $("#welcomeTxt").text("Welcome " + rt);
             // alert(rt);
             // $("#sum").click(function() {
-            $("#welcomeTxt").text("Welcome:"  +  localStorage.getItem("id"));
+            $("#welcomeTxt").text("Welcome, " + localStorage.getItem("id"));
             $.ajax({
-                    type: 'POST',
-                    url: 'http://192.168.0.88:8058/student/statistics',
-                    data: {
+                type: 'POST',
+                url: 'http://192.168.0.88:8058/student/statistics',
+                data: {
 
-                    },
-                    success: function(dataObj) {
-                        //var dataObj = eval("(" + data + ")");
-                        //alert(dataObj.total);
+                },
+                success: function (dataObj) {
+                    //var dataObj = eval("(" + data + ")");
+                    //alert(dataObj.total);
 
-                        // $("#id2020101").html(dataObj["15080322"]+);
-                        $("#id150803").html(dataObj["150803"] + "人");
-                        $("#id150801").html(dataObj["150801"] + "人");
-                        $("#id150802").html(dataObj["150802"] + "人");
-                        $("#id150805").html(dataObj["150805"] + "人");
-                        $("#admin").html(dataObj["管理系"] + "人");
-                        $("#computer").html(dataObj["计算机系"] + "人");
-                        $("#building").html(dataObj["土木系"] + "人");
-                        $("#man").html(dataObj["男"] + "人");
-                        $("#woman").html(dataObj["女"] + "人");
-                        $("#sum").html(dataObj["total"]);
+                    // $("#id2020101").html(dataObj["15080322"]+);
+                    $("#id150803").html(dataObj["150803"] + "人");
+                    $("#id150801").html(dataObj["150801"] + "人");
+                    $("#id150802").html(dataObj["150802"] + "人");
+                    $("#id150805").html(dataObj["150805"] + "人");
+                    $("#admin").html(dataObj["管理系"] + "人");
+                    $("#computer").html(dataObj["计算机系"] + "人");
+                    $("#building").html(dataObj["土木系"] + "人");
+                    $("#man").html(dataObj["男"] + "人");
+                    $("#woman").html(dataObj["女"] + "人");
+                    $("#sum").html(dataObj["total"]);
 
-                    },
-                    error: function() {
-                        alert("错误");
-                    }
-                })
+                },
+                error: function () {
+                    alert("错误");
+                }
+            })
                 // })
         </script>
 </body>
