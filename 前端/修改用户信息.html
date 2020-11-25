@@ -97,7 +97,7 @@
             height: 20px;
             /* margin-bottom: 5px; */
             margin-left: 10px;
-            border: 2px solid #1890ff;
+            /* border: 2px solid #1890ff; */
             border-radius: 10%;
             background-color: white;
         }
@@ -133,11 +133,58 @@
         .box form {
             /* position: relative; */
             margin-top: 25px;
-            width: 60%;
+            width: 100%;
             height: 70%;
             display: block;
+            /* border: 1px solid green; */
+        }
+        
+        .mod-1 {
+            /* position: relative; */
+            margin-left: 24%;
+            width: 40%;
+            height: 100%;
+            display: block;
             /* border: 1px solid black; */
+            float: left;
             text-align: right;
+        }
+        
+        .mod-2 {
+            position: relative;
+            padding-top: 50px;
+            width: 30%;
+            height: 85%;
+            display: block;
+            float: left;
+            /* border: 1px solid red; */
+            text-align: left;
+        }
+        
+        .mod-2 p {
+            /* border: 1px solid rgb(224, 219, 219); */
+            margin-top: 45px;
+            font-size: 18px;
+        }
+        
+        .mod-2 p:nth-child(1) {
+            position: absolute;
+            top: 44px;
+        }
+        
+        .mod-2 p:nth-child(2) {
+            position: absolute;
+            top: 112px;
+        }
+        
+        .mod-2 p:nth-child(3) {
+            position: absolute;
+            top: 182px;
+        }
+        
+        .mod-2 p:nth-child(4) {
+            position: absolute;
+            top: 250px;
         }
         
         form label {
@@ -164,13 +211,14 @@
             display: box;
             padding-top: 15px;
             text-align: center;
+            padding-left: 6px;
+            /* border: 2px solid #1890ff; */
         }
         /* 按钮 */
         
         .confirm {
             width: 100px;
             height: 30px;
-            margin-right: 10px;
             border: 2px solid #1890ff;
             border-radius: 5%;
             background-color: white;
@@ -201,31 +249,34 @@
                     </ul>
                 </div>
                 <button type="button" class="exit-btn" onclick="window.location.href=('./登录界面.html')">退出</button>
-                <span class="welcome" id="welcomeTxt">"/Welcome,"</span>
+                <span class="welcome" id="welcomeTxt"></span>
             </div>
         </div>
         <div class="box">
             <p class="box-title">修改用户信息</p>
             <form action="" name="form1">
-                <label for="">登陆ID：</label>
-                <input class="id" name="id" type="text" disabled="true">
-                <br>
-                <label for="">姓名：</label>
-                <input name="name" id="name" type="text">
-                <span id="namemsg"></span>
-                <br>
-                <label for="">手机号码：</label>
-                <input name="phone" id="phone" type="text">
-                <span id="iphone"></span>
-                <br>
-                <label for="">修改密码：</label>
-                <input name="password" id="passwd" type="password">
-                <span id="pwdmsg"></span>
-                <br>
-                <label for="">确认密码：</label>
-                <input name="pwd1" type="password">
-                <span id="pwd1msg"></span>
-
+                <div class="mod-1">
+                    <label for="">登陆ID：</label>
+                    <input class="id" name="id" type="text" disabled="true">
+                    <br>
+                    <label for="">用户姓名：</label>
+                    <input name="name" id="name" type="text">
+                    <br>
+                    <label for="">手机号码：</label>
+                    <input name="phone" id="phone" type="text">
+                    <br>
+                    <label for="">修改密码：</label>
+                    <input name="password" id="passwd" type="password">
+                    <br>
+                    <label for="">确认密码：</label>
+                    <input name="pwd1" type="password">
+                </div>
+                <div class="mod-2">
+                    <p id="namemsg"></p>
+                    <p id="iphone"></p>
+                    <p id="pwdmsg"></p>
+                    <p id="pwd1msg"></p>
+                </div>
             </form>
             <div class="btn-box">
                 <button class="confirm" onclick="test()">提交</button>
@@ -259,7 +310,7 @@
             //密码验证
         document.form1.password.onkeyup = function() {
                 var reg1 = /(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{1,}$/;
-                if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+                if (reg1.test(this.value) && this.value.length >= 8 && this.value.length <= 30) {
                     document.getElementById("pwdmsg").innerHTML = "输入正确";
                 } else {
                     document.getElementById("pwdmsg").innerHTML = "输入错误";
@@ -275,8 +326,8 @@
         }
 
 
-        $("#welcomeTxt").text("Welcome:" + localStorage.getItem("id"));
-
+        $("#welcomeTxt").text("Welcome," + localStorage.getItem("id"));
+        $(".id").val(localStorage.getItem("id"));
 
         var value = localStorage.getItem("id");
 

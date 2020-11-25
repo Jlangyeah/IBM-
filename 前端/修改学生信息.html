@@ -300,42 +300,42 @@
                 <div class="add-box">
                     <div class="add-box-1">
                         <label for=""><span>学号:</span>
-                            <input type="text" class="text-box" name="stunum" id="xuehao" placeholder="请输入学号"
-                                maxlength="30"></label>
+                        <input type="text" class="text-box" name="stunum" id="xuehao" disabled="true"
+                            maxlength="30"></label>
                         <span id="nummsg"></span>
                         <br><br><br>
                         <label for=""><span>姓名:</span>
-                            <input type="text" class="text-box" name="name" id="stu_name" placeholder="请输入姓名"></label>
+                        <input type="text" class="text-box" name="name" id="stu_name"  onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"></label>
                         <span id="namemsg"></span>
                         <br><br><br>
                         <label for=""><span>性别:</span>
-                            <select name="gender" class="select-box" id="sex">
-                                <option value=""></option>
-                                <option value="男">男</option>
-                                </option>
-                                <option value="女">女</option>
-                            </select></label>
+                        <select name="gender" class="select-box" id="sex">
+                            <option value=""></option>
+                            <option value="男">男</option>
+                            </option>
+                            <option value="女">女</option>
+                        </select></label>
                     </div>
                     <div class="add-box-2">
                         <label for=""><span>出生年月日:</span>
-                            <input type="date" class="text-box" name="birth" id="time"></label>
+                        <input type="date" class="text-box" name="birth" id="time"></label>
                         <br><br><br>
                         <label for=""><span>电话:</span>
-                            <input type="text" class="text-box" name="phone" id="phone" placeholder="请输入手机号"></label>
+                        <input type="text" class="text-box" name="phone" id="phone" placeholder="请输入手机号" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="value=value.replace(/[^\d]/g,'')"></label>
                         <span id="iphone"></span>
                         <br><br><br>
                         <label for=""><span>班级:</span>
-                            <input type="text" class="text-box" name="clazz" id="cla" placeholder="请输入班级"></label>
+                        <input type="text" class="text-box" name="clazz" id="cla" maxlength="30" placeholder="请输入班级"></label>
                         <span id="clamsg"></span>
                         <br><br><br>
                         <label for=""><span>系部:</span>
-                            <select name="dept" class="select-box" id="dept">
-                                <option value=""></option>
-                                <option value="管理系">管理系</option>
-                                <option value="计算机系">计算机系</option>
-                                <option value="土木系">土木系</option>
-                            </select>
-                        </label>
+                        <select name="dept" class="select-box" id="dept">
+                            <option value=""></option>
+                            <option value="管理系">管理系</option>
+                            <option value="计算机系">计算机系</option>
+                            <option value="土木系">土木系</option>
+                        </select>
+                    </label>
                     </div>
                     <br>
                 </div>
@@ -353,7 +353,7 @@
 
             </form>
             <div class="btn-box">
-                <button class="confirm" onclick="test()">提交</button>
+                <button class="confirm">提交</button>
             </div>
         </div>
     </div>
@@ -377,120 +377,81 @@
             };
         }
 
-        var pan = 0;
-        //学号验证
-        document.form2.stunum.onkeyup = function() {
-            var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
-            if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                document.getElementById("nummsg").innerHTML = "正确";
-                pan = 0;
-            } else {
-                document.getElementById("nummsg").innerHTML = "错误";
-                pan = 1;
-            }
-        }
+
+
 
         //姓名验证
-        document.form2.name.onkeyup = function() {
-            var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
-            if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                document.getElementById("namemsg").innerHTML = "正确";
-                pan = 0;
-            } else {
-                document.getElementById("namemsg").innerHTML = "错误";
-                pan = 1;
-            }
-        }
+        // document.form2.name.onkeyup = function() {
+        //     var reg = /^([\u4e00-\u9fa5]{1,30})$/;
+        //     if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+        //         document.getElementById("namemsg").innerHTML = "正确";
+
+        //     } else {
+        //         document.getElementById("namemsg").innerHTML = "错误";
+
+        //     }
+        // }
 
 
         //手机号验证
-        document.form2.phone.onkeyup = function() {
-                var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
-                if (reg3.test(this.value) && this.value.length == 11) {
-                    document.getElementById("iphone").innerHTML = "正确";
-                    pan = 0;
-                } else {
-                    document.getElementById("iphone").innerHTML = "错误";
-                    pan = 1;
-                }
-            }
-            //班级验证
-        document.form2.clazz.onkeyup = function() {
-            var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
-            if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                document.getElementById("clamsg").innerHTML = "正确";
-                pan = 0;
+        // document.form2.phone.onkeyup = function() {
+        //         var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
+        //         if (reg3.test(this.value) && this.value.length == 11) {
+        //             document.getElementById("iphone").innerHTML = "正确";
+
+        //         } else {
+        //             document.getElementById("iphone").innerHTML = "错误";
+
+        //         }
+        //     }
+        //班级验证
+        // document.form2.clazz.onkeyup = function() {
+        //     var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
+        //     if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
+        //         document.getElementById("clamsg").innerHTML = "正确";
+
+        //     } else {
+        //         document.getElementById("clamsg").innerHTML = "错误";
+
+        //     }
+        // }
+
+
+        $(".confirm").click(function() {
+            var name = $.trim($("#stu_name").val());
+            var phone = $.trim($("#phone").val());
+            var cla = $.trim($("#cla").val());
+
+            if (phone != "" && name != "" && cla != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://192.168.0.88:8058/student/modify',
+                    data: {
+                        name: $("#stu_name").val(),
+                        stunum: $("#xuehao").val(),
+                        birth: $("#time").val(),
+                        gender: $("#sex").val(),
+                        phone: $("#phone").val(),
+                        photo: "2.png",
+                        // photo: photoUrl,
+                        clazz: $("#cla").val(),
+                        dept: $("#dept").val()
+                    },
+                    success: function(data) {
+                        var dataObj = eval("(" + data + ")");
+                        alert(dataObj.msg);
+                        window.location.href = "./学生信息列表.html";
+                    },
+                    error: function() {
+                        alert("登陆ID或者密码错误");
+                    }
+                });
+
             } else {
-                document.getElementById("clamsg").innerHTML = "错误";
-                pan = 1;
-            }
-        }
-
-
-
-
-        //注册按钮方法
-        function test() {
-            var str = "正确"
-                //学号
-            if (document.getElementById("nummsg").innerHTML !== str) {
-                document.getElementById("nummsg").innerHTML = "错误";
-                document.form2.stunum.focus();
-                document.form2.stunum.value = "";
-                return false;
-            }
-            //姓名
-            if (document.getElementById("namemsg").innerHTML !== str) {
-                document.getElementById("namemsg").innerHTML = "错误";
-                document.form2.name.focus();
-                document.form2.name.value = "";
-                return false;
+                alert("请检查是否有遗漏！")
             }
 
-            //手机
-            if (document.getElementById("iphone").innerHTML !== str) {
-                document.getElementById("iphone").innerHTML = "错误";
-                document.form2.phone.focus();
-                document.form2.phone.value = "";
-                return false;
-            }
-
-            //班级
-            if (document.getElementById("clamsg").innerHTML !== str) {
-                document.getElementById("clamsg").innerHTML = "错误";
-                document.form2.clazz.focus();
-                document.form2.clazz.value = "";
-                return false;
-            }
-            $.ajax({
-                type: 'POST',
-                url: 'http://192.168.0.88:8058/student/modify',
-                data: {
-                    name: $("#stu_name").val(),
-                    stunum: $("#xuehao").val(),
-                    birth: $("#time").val(),
-                    gender: $("#sex").val(),
-                    phone: $("#phone").val(),
-                    photo: src = "2.png",
-                    // photo: photoUrl,
-                    clazz: $("#cla").val(),
-                    dept: $("#dept").val()
-                },
-                success: function(data) {
-
-                    var dataObj = eval("(" + data + ")");
-                    alert(dataObj.msg);
-                    window.location.href = "./学生信息列表.html";
-
-                },
-                error: function() {
-                    alert("登陆ID或者密码错误");
-
-                }
-            });
-        }
-
-
+        })
         $(function() {
             // var stunum = getUrlParam("stunum");
             // alert(stunum);
