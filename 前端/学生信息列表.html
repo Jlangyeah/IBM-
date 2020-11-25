@@ -234,7 +234,9 @@
             left: 0;
             bottom: 0;
             margin: auto;
-            background-color: rgb(245, 245, 245);
+            border-radius: 15px;
+            background-color: white;
+            border: 2px solid #1890ff;
         }
         
         .pop-text {
@@ -252,16 +254,17 @@
             height: 30px;
             /* margin-bottom: 5px; */
             margin-left: 20px;
-            border: 2px solid #1890ff;
-            border-radius: 5%;
-            background-color: white;
-        }
-        
-        .chose-btn:hover {
             background-color: #1890ff;
             color: white;
             border: none;
             border-radius: 5%;
+        }
+        
+        .chose-btn:hover {
+            border: 2px solid #1890ff;
+            border-radius: 5%;
+            color: black;
+            background-color: white;
         }
         
         .footer {
@@ -345,7 +348,7 @@
                     field: 'do',
                     title: '操作',
                     formatter: function(value, row, index) {
-                        html = "<img src='./modify.png' alt='modify' onclick='change(" + row.stunum + ")'>" + "<img src='./delete.png' alt='delete' onclick='popBox(" + row.stunum + ")'>"
+                        html = "<img src='/modify.png' alt='modify' onclick='change(" + row.stunum + ")'>" + "<img src='/delete.png' alt='delete' onclick='popBox(" + row.stunum + ")'>"
                         return html
                     }
                 }]
