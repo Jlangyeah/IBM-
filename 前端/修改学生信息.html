@@ -20,7 +20,7 @@
             position: absolute;
             width: 100%;
             height: auto;
-            background-image: url(./3.png);
+            background-image: url(/3.png);
             background-size: cover;
             /* background-attachment: fixed; */
         }
@@ -377,46 +377,6 @@
             };
         }
 
-
-
-
-        //姓名验证
-        // document.form2.name.onkeyup = function() {
-        //     var reg = /^([\u4e00-\u9fa5]{1,30})$/;
-        //     if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-        //         document.getElementById("namemsg").innerHTML = "正确";
-
-        //     } else {
-        //         document.getElementById("namemsg").innerHTML = "错误";
-
-        //     }
-        // }
-
-
-        //手机号验证
-        // document.form2.phone.onkeyup = function() {
-        //         var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
-        //         if (reg3.test(this.value) && this.value.length == 11) {
-        //             document.getElementById("iphone").innerHTML = "正确";
-
-        //         } else {
-        //             document.getElementById("iphone").innerHTML = "错误";
-
-        //         }
-        //     }
-        //班级验证
-        // document.form2.clazz.onkeyup = function() {
-        //     var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
-        //     if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-        //         document.getElementById("clamsg").innerHTML = "正确";
-
-        //     } else {
-        //         document.getElementById("clamsg").innerHTML = "错误";
-
-        //     }
-        // }
-
-
         $(".confirm").click(function() {
             var name = $.trim($("#stu_name").val());
             var phone = $.trim($("#phone").val());
@@ -473,7 +433,6 @@
                 }
             });
         });
-        // var photoUrl = "";
     </script>
 
 

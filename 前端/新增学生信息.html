@@ -20,7 +20,7 @@
             position: absolute;
             width: 100%;
             height: auto;
-            background-image: url(./3.png);
+            background-image: url(/3.png);
             background-size: cover;
         }
         /* 表头 */
@@ -427,16 +427,16 @@
             };
         }
 
-        var pan = 0;
+
         //学号验证
         document.form2.stunum.onkeyup = function() {
             var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
             if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                 document.getElementById("nummsg").innerHTML = "正确";
-                pan = 0;
+
             } else {
                 document.getElementById("nummsg").innerHTML = "错误";
-                pan = 1;
+
             }
         }
 
@@ -445,10 +445,10 @@
             var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
             if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                 document.getElementById("namemsg").innerHTML = "正确";
-                pan = 0;
+
             } else {
                 document.getElementById("namemsg").innerHTML = "错误";
-                pan = 1;
+
             }
         }
 
@@ -458,10 +458,10 @@
                 var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
                 if (reg3.test(this.value) && this.value.length == 11) {
                     document.getElementById("iphone").innerHTML = "正确";
-                    pan = 0;
+
                 } else {
                     document.getElementById("iphone").innerHTML = "错误";
-                    pan = 1;
+
                 }
             }
             //班级验证
@@ -469,10 +469,10 @@
             var reg2 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
             if (reg2.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
                 document.getElementById("clamsg").innerHTML = "正确";
-                pan = 0;
+
             } else {
                 document.getElementById("clamsg").innerHTML = "错误";
-                pan = 1;
+
             }
         }
 
@@ -544,32 +544,6 @@
 
 
         }
-
-        // var photoUrl = "";
-
-        // $(".confirm").click(function() {
-
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: 'http://localhost:8058/student/upload',
-        //         data: {
-
-        //         },
-        //         success: function(data) {
-        //             photoUrl = data.photoUrl;
-        //             var dataObj = eval("(" + data + ")");
-        //             alert(dataObj.msg);
-        //             alert("5454554");
-        //         },
-        //         error: function() {
-
-        //             alert("登陆ID或者密码错误");
-
-        //         }
-        //     });
-
-
-        // });
     </script>
 
 </body>
