@@ -169,16 +169,32 @@
             border-bottom: 1px solid #1890ff;
         }
         
-        .login_form img {
+        .login_form .img1 {
             width: 15px;
             height: 15px;
             margin-right: 10px;
         }
         
-        .register_form img {
+        .register_form .img1 {
             width: 15px;
             height: 15px;
             margin-right: 10px;
+        }
+        
+        .login_form #img2 {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            /* visibility: hidden; */
+            display: none;
+        }
+        
+        .login_form #img3 {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            /* visibility: hidden; */
+            display: none;
         }
     </style>
 </head>
@@ -195,9 +211,9 @@
             <p class="title">欢迎来到学生信息管理系统</p>
             <div class="login_form">
                 <form action="post">
-                    <label for=""><img src="/user.png" alt=""></label><input id="login_id" maxlength="30" type="text" name="id" placeholder="登录ID">
+                    <label for=""><img class="img1" src="/user.png" alt=""></label><input id="login_id" maxlength="30" type="text" name="id" placeholder="登录ID"><img id="img2" src="/warn.png" alt="">
                     <br><br>
-                    <label for=""><img src="/passwd.png" alt=""></label><input id="login_pwd" type="password" maxlength="30" name="password" placeholder="用户密码">
+                    <label for=""><img  class="img1" src="/passwd.png" alt=""></label><input id="login_pwd" type="password" maxlength="30" name="password" placeholder="用户密码"><img id="img3" src="/warn.png" alt="">
                     <br><br>
 
                 </form>
@@ -213,16 +229,16 @@
             <h3>用户注册</h3>
             <div class="register_form">
                 <form action="post">
-                    <label for=""><img src="/id.png" alt=""></label><input type="text" id="register_id" maxlength="30" name="id" placeholder="请 输 入 ID">
+                    <label for=""><img class="img1" src="/id.png" alt=""></label><input type="text" id="register_id" maxlength="30" name="id" placeholder="请 输 入 ID">
                     <br><br>
 
-                    <label for=""><img src="/user.png" alt=""></label><input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="name">
+                    <label for=""><img class="img1" src="/user.png" alt=""></label><input maxlength="20" id="register_name" placeholder="请 输 入 姓 名" onkeyup="this.value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')" type="text" name="name">
                     <br><br>
-                    <label for=""><img src="/phone.png" alt=""></label><input id="phone" type="text" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="value=value.replace(/[^\d]/g,'')" name="phone" placeholder="请 输 入 手 机 号">
+                    <label for=""><img class="img1" src="/phone.png" alt=""></label><input id="phone" type="text" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="value=value.replace(/[^\d]/g,'')" name="phone" placeholder="请 输 入 手 机 号">
                     <br><br>
-                    <label for=""><img src="/passwd.png" alt=""></label><input id="register_pwd" type="password" maxlength="30" name="password" placeholder="请 输 入 密 码">
+                    <label for=""><img class="img1" src="/passwd.png" alt=""></label><input id="register_pwd" type="password" maxlength="30" name="password" placeholder="请 输 入 密 码">
                     <br><br>
-                    <label for=""><img src="/passwd.png" alt=""></label><input id="register_repwd" type="password" maxlength="30" name="repasswd" placeholder="请 再 次 输 入 密 码">
+                    <label for=""><img class="img1" src="/passwd.png" alt=""></label><input id="register_repwd" type="password" maxlength="30" name="repasswd" placeholder="请 再 次 输 入 密 码">
                     <br><br>
 
                 </form>
@@ -244,9 +260,11 @@
         //登陆提交
         $("#submit1").click(function() {
             var input1 = document.getElementById("login_id");
+            var input2 = document.getElementById("login_pwd");
+            var img2 = document.getElementById("img2");
+            var img3 = document.getElementById("img3");
             localStorage.setItem("id", input1.value); //存入 参数： 1.调用的值 2.所要存入的数据 
             console.log(localStorage.getItem("id")); //输出 
-
 
             var login_id = $.trim($("#login_id").val());
             var login_pwd = $.trim($("#login_pwd").val());
@@ -261,7 +279,7 @@
                     },
                     success: function(data) {
                             var dataObj = eval("(" + data + ")");
-                            alert(dataObj.msg);
+                            // alert(dataObj.msg);
                             if (dataObj.code == 1) {
                                 // $(location).attr('href', '学生信息统计.html');
                                 window.open("学生信息统计.html?inputStr=" + input1.value); //传入参数
@@ -275,12 +293,21 @@
                 })
             } else {
                 if (login_pwd != "") {
-                    alert("请输入登陆ID")
+                    input1.style.borderBottomColor = "red";
+                    img2.style.display = "inline";
+                    // alert("请输入登陆ID")
                 } else if (login_id != "") {
-                    alert("请输入密码")
+
+                    input2.style.borderBottomColor = "red";
+                    img3.style.display = "inline";
+                    // alert("请输入密码");
 
                 } else {
-                    alert("请检查输入的登陆ID和密码！")
+                    input1.style.borderBottomColor = "red";
+                    input2.style.borderBottomColor = "red";
+                    img2.style.display = "inline";
+                    img3.style.display = "inline";
+                    // alert("请检查输入的登陆ID和密码！")
                 }
 
             }
@@ -288,6 +315,14 @@
 
 
         });
+        $("#login_id").focus(function() {
+            $("#img2").css("display", "none");
+            $("#login_id").css("border-bottom-color", "#e6e6e6");
+        })
+        $("#login_pwd").focus(function() {
+            $("#img3").css("display", "none");
+            $("#login_pwd").css("border-bottom-color", "#e6e6e6");
+        })
 
 
         //注册点击
