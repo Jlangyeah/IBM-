@@ -279,10 +279,16 @@
                     },
                     success: function(data) {
                             var dataObj = eval("(" + data + ")");
-                            // alert(dataObj.msg);
+                            alert(dataObj.msg);
                             if (dataObj.code == 1) {
                                 // $(location).attr('href', '学生信息统计.html');
                                 window.open("学生信息统计.html?inputStr=" + input1.value); //传入参数
+                            }
+                            if (dataObj.code == 0) {
+                                input1.style.borderBottomColor = "red";
+                                input2.style.borderBottomColor = "red";
+                                img2.style.display = "inline";
+                                img3.style.display = "inline";
                             }
                         }
                         //                  error:function(){
@@ -307,7 +313,9 @@
                     input2.style.borderBottomColor = "red";
                     img2.style.display = "inline";
                     img3.style.display = "inline";
-                    // alert("请检查输入的登陆ID和密码！")
+                    alert("请检查输入的登陆ID和密码！");
+
+
                 }
 
             }
