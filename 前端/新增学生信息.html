@@ -86,8 +86,11 @@
         }
         
         span.welcome {
+            font-size: 16px;
             float: right;
-            color: rgb(185, 26, 185);
+            /* color: rgb(185, 26, 185); */
+            color: white;
+            font-weight: bold;
         }
         /* 退出按钮 */
         
@@ -429,10 +432,10 @@
         document.form2.stunum.onkeyup = function() {
             var reg1 = /^(?![\u4e00-\u9fa5]+$)(?![A-Za-z]+$)[0-9A-Za-z\u4e00-\u9fa5]{1,30}$/;
             if (reg1.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                document.getElementById("nummsg").innerHTML = "正确";
+                document.getElementById("nummsg").innerText = "正确";
 
             } else {
-                document.getElementById("nummsg").innerHTML = "错误";
+                document.getElementById("nummsg").innerText = "错误";
 
             }
         }
@@ -441,10 +444,10 @@
         document.form2.name.onkeyup = function() {
             var reg = /^([\u4e00-\u9fa5]{1,30}|[a-zA-Z]{1,30})$/;
             if (reg.test(this.value) && this.value.length >= 1 && this.value.length <= 30) {
-                document.getElementById("namemsg").innerHTML = "正确";
+                document.getElementById("namemsg").innerText = "正确";
 
             } else {
-                document.getElementById("namemsg").innerHTML = "错误";
+                document.getElementById("namemsg").innerText = "错误";
 
             }
         }
@@ -454,10 +457,10 @@
         document.form2.phone.onkeyup = function() {
                 var reg3 = /^(13|14|15|17|18)[0-9]{9}/;
                 if (reg3.test(this.value) && this.value.length == 11) {
-                    document.getElementById("iphone").innerHTML = "正确";
+                    document.getElementById("iphone").innerText = "正确";
 
                 } else {
-                    document.getElementById("iphone").innerHTML = "错误";
+                    document.getElementById("iphone").innerText = "错误";
 
                 }
             }
@@ -480,23 +483,23 @@
         function test() {
             var str = "正确"
                 //学号
-            if (document.getElementById("nummsg").innerHTML !== str) {
-                document.getElementById("nummsg").innerHTML = "错误";
+            if (document.getElementById("nummsg").innerText !== str) {
+                document.getElementById("nummsg").innerText = "错误";
                 document.form2.stunum.focus();
                 document.form2.stunum.value = "";
                 return false;
             }
             //姓名
-            if (document.getElementById("namemsg").innerHTML !== str) {
-                document.getElementById("namemsg").innerHTML = "错误";
+            if (document.getElementById("namemsg").innerText !== str) {
+                document.getElementById("namemsg").innerText = "错误";
                 document.form2.name.focus();
                 document.form2.name.value = "";
                 return false;
             }
 
             //手机
-            if (document.getElementById("iphone").innerHTML !== str) {
-                document.getElementById("iphone").innerHTML = "错误";
+            if (document.getElementById("iphone").innerText !== str) {
+                document.getElementById("iphone").innerText = "错误";
                 document.form2.phone.focus();
                 document.form2.phone.value = "";
                 return false;
